@@ -1,3 +1,5 @@
+import L from "leaflet";
+
 var mymap = L.map("mapid").setView([40.7128, -74.006], 13);
 L.tileLayer(
   "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}",
