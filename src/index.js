@@ -1,4 +1,5 @@
 import L from "leaflet";
+import oldStudentData from "./oldStudentData.json";
 
 const dhammaHouseCoordinates = [40.7544, -73.9905];
 
@@ -24,7 +25,18 @@ const addNycBoroughsTo = async map => {
 
   const nycBoroughsGeojson = await nycBoroughsResponse.json();
 
-  L.geoJson(nycBoroughsGeojson).addTo(map, { style: nycBoroughsStyle });
+  L.geoJson(nycBoroughsGeojson)
+    .addTo(map, { style: nycBoroughsStyle })
+    .bindPopup(layer => {
+      const boroughName = layer.feature.properties.borough;
+      const { oldStudentCount } = oldStudentData.find(
+        borough => borough.name === boroughName
+      );
+
+      return `
+      There are ${oldStudentCount} old students in ${boroughName}
+      `;
+    });
 };
 
 const addDhammaHouseTo = map => {
