@@ -1,6 +1,9 @@
 import L from "leaflet";
 
-var mymap = L.map("mapid").setView([40.7128, -74.006], 13);
+const dhammaHouseCoordinates = [40.7544, -73.9905];
+
+const mymap = L.map("mapid").setView(dhammaHouseCoordinates, 13);
+
 L.tileLayer(
   "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}",
   {
@@ -13,4 +16,4 @@ L.tileLayer(
   }
 ).addTo(mymap);
 
-var marker = L.marker([40.7128, -74.006]).addTo(mymap);
+L.marker(dhammaHouseCoordinates).addTo(mymap);
