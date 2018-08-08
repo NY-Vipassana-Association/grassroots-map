@@ -16,4 +16,7 @@ L.tileLayer(
   }
 ).addTo(mymap);
 
-L.marker(dhammaHouseCoordinates).addTo(mymap);
+const dhammaHouseMarker = L.marker(dhammaHouseCoordinates).addTo(mymap);
+dhammaHouseMarker.bindPopup(
+  "NYC Dhamma House<br />247 W 38th St #1003, New York, NY 10018<br />https://www.ny.us.dhamma.org/"
+);
