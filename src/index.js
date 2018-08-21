@@ -1,4 +1,4 @@
-import L from "leaflet";
+import Leaflet from "leaflet";
 import oldStudentData from "./oldStudentData.json";
 
 const dhammaHouseCoordinates = [40.7544, -73.9905];
@@ -25,7 +25,7 @@ const addNycBoroughsTo = async map => {
 
   const nycBoroughsGeojson = await nycBoroughsResponse.json();
 
-  L.geoJson(nycBoroughsGeojson)
+  Leaflet.geoJson(nycBoroughsGeojson)
     .addTo(map, { style: nycBoroughsStyle })
     .bindPopup(layer => {
       const boroughName = layer.feature.properties.borough;
@@ -40,16 +40,16 @@ const addNycBoroughsTo = async map => {
 };
 
 const addDhammaHouseTo = map => {
-  const dhammaHouseMarker = L.marker(dhammaHouseCoordinates).addTo(map);
+  const dhammaHouseMarker = Leaflet.marker(dhammaHouseCoordinates).addTo(map);
   dhammaHouseMarker.bindPopup(
     "NYC Dhamma House<br />247 W 38th St #1003, New York, NY 10018<br />https://www.ny.us.dhamma.org/"
   );
 };
 
 const initializeMap = () => {
-  const map = L.map("mapid").setView(dhammaHouseCoordinates, 11);
+  const map = Leaflet.map("mapid").setView(dhammaHouseCoordinates, 11);
 
-  L.tileLayer(
+  Leaflet.tileLayer(
     "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}",
     {
       attribution:
