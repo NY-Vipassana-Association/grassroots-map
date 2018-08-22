@@ -20,6 +20,7 @@
     "surge": "^0.20.1"
   },
   "dependencies": {
-    "leaflet": "^1.3.3"
+    "leaflet": "^1.3.3",
+    "postcss-modules": "^1.3.2"
   }
 }

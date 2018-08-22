@@ -1,5 +1,6 @@
 import Leaflet from "leaflet";
 import oldStudentData from "./oldStudentData.json";
+import cssClasses from "./css/main.css";
 
 const dhammaHouseCoordinates = [40.7544, -73.9905];
 
@@ -84,6 +85,28 @@ const initializeMap = () => {
 
   addDhammaHouseTo(map);
   addNycBoroughsTo(map);
+  const info = L.control();
+
+  info.onAdd = function(map) {
+    this._div = L.DomUtil.create("div", cssClasses.info); // create a div with a class "info"
+    this.update();
+    return this._div;
+  };
+
+  // method that we will use to update the control based on feature properties passed
+  info.update = function(props) {
+    this._div.innerHTML =
+      "<h4>Vipassana Grassroots Map</h4>" +
+      (props
+        ? "<b>" +
+          props.name +
+          "</b><br />" +
+          props.density +
+          " people / mi<sup>2</sup>"
+        : "Hover over a region");
+  };
+
+  info.addTo(map);
 };
 
 initializeMap();
