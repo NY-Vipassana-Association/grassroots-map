@@ -36,7 +36,8 @@ const nycBoroughsStyle = feature => {
   };
 };
 
-const addNycBoroughsTo = async map => {
+const addNycBoroughsTo = async (map, info) => {
+  let geojsonBoroughsLayer;
   let nycBoroughsResponse;
   try {
     nycBoroughsResponse = await fetch(
@@ -49,7 +50,43 @@ const addNycBoroughsTo = async map => {
 
   const nycBoroughsGeojson = await nycBoroughsResponse.json();
 
-  Leaflet.geoJson(nycBoroughsGeojson, { style: nycBoroughsStyle })
+  function resetHighlight(e) {
+    geojsonBoroughsLayer.resetStyle(e.target);
+    info.update();
+  }
+
+  const highlightFeature = e => {
+    var layer = e.target;
+
+    layer.setStyle({
+      weight: 5,
+      color: "#666",
+      dashArray: "",
+      fillOpacity: 0.7
+    });
+
+    if (
+      !Leaflet.Browser.ie &&
+      !Leaflet.Browser.opera &&
+      !Leaflet.Browser.edge
+    ) {
+      layer.bringToFront();
+    }
+
+    info.update(layer.feature.properties);
+  };
+
+  const onEachFeature = (feature, layer) => {
+    layer.on({
+      mouseover: highlightFeature,
+      mouseout: resetHighlight
+    });
+  };
+
+  geojsonBoroughsLayer = Leaflet.geoJson(nycBoroughsGeojson, {
+    style: nycBoroughsStyle,
+    onEachFeature
+  })
     .addTo(map)
     .bindPopup(layer => {
       const boroughName = layer.feature.properties.borough;
@@ -71,7 +108,7 @@ const addDhammaHouseTo = map => {
 const createInfoBox = () => {
   const info = Leaflet.control();
 
-  info.onAdd = function(map) {
+  info.onAdd = function() {
     this._div = Leaflet.DomUtil.create("div", cssClasses.info); // create a div with a class "info"
     this.update();
     return this._div;
@@ -83,10 +120,10 @@ const createInfoBox = () => {
       "<h4>Vipassana Grassroots Map</h4>" +
       (props
         ? "<b>" +
-          props.name +
+          props.borough +
           "</b><br />" +
-          props.density +
-          " people / mi<sup>2</sup>"
+          getBoroughDataByName(props.borough).oldStudentCount +
+          " old students"
         : "Hover over a region");
   };
 
@@ -108,10 +145,10 @@ const initializeMap = () => {
     }
   ).addTo(map);
 
-  addDhammaHouseTo(map);
-  addNycBoroughsTo(map);
   const info = createInfoBox();
   info.addTo(map);
+  addDhammaHouseTo(map);
+  addNycBoroughsTo(map, info);
 };
 
 initializeMap();
