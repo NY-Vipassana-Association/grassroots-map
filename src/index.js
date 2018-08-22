@@ -3,14 +3,39 @@ import oldStudentData from "./oldStudentData.json";
 
 const dhammaHouseCoordinates = [40.7544, -73.9905];
 
-const nycBoroughsStyle = feature => ({
-  // fillColor: getColor(feature.properties.density),
-  weight: 2,
-  opacity: 1,
-  color: "blue",
-  dashArray: "3",
-  fillOpacity: 0.5
-});
+const populationColors = {
+  2500: "#800026",
+  2000: "#BD0026",
+  1500: "#E31A1C",
+  1000: "#FC4E2A",
+  500: "#FD8D3C",
+  200: "#FEB24C",
+  0: "#FED976"
+};
+
+function getColor(count) {
+  const biggestKeySmallerThanCount = Object.keys(populationColors)
+    .map(key => parseInt(key))
+    .reduce((prev, curr) => (curr > prev && curr <= count ? curr : prev), 0);
+  console.log(biggestKeySmallerThanCount);
+  return populationColors[biggestKeySmallerThanCount];
+}
+
+const getBoroughDataByName = name =>
+  oldStudentData.find(borough => borough.name === name);
+
+const nycBoroughsStyle = feature => {
+  return {
+    fillColor: getColor(
+      getBoroughDataByName(feature.properties.borough).oldStudentCount
+    ),
+    weight: 2,
+    opacity: 1,
+    color: "white",
+    dashArray: "3",
+    fillOpacity: 0.7
+  };
+};
 
 const addNycBoroughsTo = async map => {
   let nycBoroughsResponse;
@@ -25,13 +50,11 @@ const addNycBoroughsTo = async map => {
 
   const nycBoroughsGeojson = await nycBoroughsResponse.json();
 
-  Leaflet.geoJson(nycBoroughsGeojson)
-    .addTo(map, { style: nycBoroughsStyle })
+  Leaflet.geoJson(nycBoroughsGeojson, { style: nycBoroughsStyle })
+    .addTo(map)
     .bindPopup(layer => {
       const boroughName = layer.feature.properties.borough;
-      const { oldStudentCount } = oldStudentData.find(
-        borough => borough.name === boroughName
-      );
+      const { oldStudentCount } = getBoroughDataByName(boroughName);
 
       return `
       There are ${oldStudentCount} old students in ${boroughName}
