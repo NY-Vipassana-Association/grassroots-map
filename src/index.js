@@ -4,20 +4,19 @@ import oldStudentData from "./oldStudentData.json";
 const dhammaHouseCoordinates = [40.7544, -73.9905];
 
 const populationColors = {
-  2500: "#800026",
-  2000: "#BD0026",
-  1500: "#E31A1C",
-  1000: "#FC4E2A",
-  500: "#FD8D3C",
+  0: "#FED976",
   200: "#FEB24C",
-  0: "#FED976"
+  500: "#FD8D3C",
+  1000: "#FC4E2A",
+  1500: "#E31A1C",
+  2000: "#BD0026",
+  2500: "#800026"
 };
 
 function getColor(count) {
   const biggestKeySmallerThanCount = Object.keys(populationColors)
     .map(key => parseInt(key))
     .reduce((prev, curr) => (curr > prev && curr <= count ? curr : prev), 0);
-  console.log(biggestKeySmallerThanCount);
   return populationColors[biggestKeySmallerThanCount];
 }
 
