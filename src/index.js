@@ -101,7 +101,7 @@ const addNycBoroughsTo = async (map, info) => {
 const addDhammaHouseTo = map => {
   const dhammaHouseMarker = Leaflet.marker(dhammaHouseCoordinates).addTo(map);
   dhammaHouseMarker.bindPopup(
-    "NYC Dhamma House<br />247 W 38th St #1003, New York, NY 10018<br />https://www.ny.us.dhamma.org/"
+    "<a target='_blank' href='https://www.ny.us.dhamma.org/'>NYC Dhamma House</a><br /><br />247 W 38th St #1003<br />New York, NY 10018"
   );
 };
 
