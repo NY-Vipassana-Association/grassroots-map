@@ -149,6 +149,33 @@ const initializeMap = () => {
   info.addTo(map);
   addDhammaHouseTo(map);
   addNycBoroughsTo(map, info);
+  const legend = L.control({ position: "bottomright" });
+
+  legend.onAdd = function(map) {
+    const div = L.DomUtil.create(
+      "div",
+      `${cssClasses.info} ${cssClasses.legend}`
+    );
+    const colorKeys = Object.keys(populationColors).map(divider =>
+      parseInt(divider)
+    );
+
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (let index = 0; index < colorKeys.length; index++) {
+      const colorKey = colorKeys[index];
+      const nextColorKey = colorKeys[index + 1];
+      div.innerHTML +=
+        '<i style="background:' +
+        getColor(colorKey) +
+        '"></i> ' +
+        colorKey +
+        (nextColorKey ? "&ndash;" + nextColorKey + "<br>" : "+");
+    }
+
+    return div;
+  };
+
+  legend.addTo(map);
 };
 
 initializeMap();
