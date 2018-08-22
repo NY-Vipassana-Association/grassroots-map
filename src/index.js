@@ -130,25 +130,7 @@ const createInfoBox = () => {
   return info;
 };
 
-const initializeMap = () => {
-  const map = Leaflet.map("mapid").setView(dhammaHouseCoordinates, 11);
-
-  Leaflet.tileLayer(
-    "https://api.mapbox.com/styles/v1/natanibar/cjkbf9gr8019f2rqllw7uz3ep/tiles/{z}/{x}/{y}?access_token={accessToken}",
-    {
-      attribution:
-        'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-      maxZoom: 18,
-      id: "mapbox.streets",
-      accessToken:
-        "pk.eyJ1IjoibmF0YW5pYmFyIiwiYSI6ImNqa2FnMTM5ajM1ajYzbG50dXptMDhjcDIifQ.Dae3BHZd9sexPOk_d76O1g"
-    }
-  ).addTo(map);
-
-  const info = createInfoBox();
-  info.addTo(map);
-  addDhammaHouseTo(map);
-  addNycBoroughsTo(map, info);
+const createLegend = () => {
   const legend = L.control({ position: "bottomright" });
 
   legend.onAdd = function(map) {
@@ -175,7 +157,29 @@ const initializeMap = () => {
     return div;
   };
 
-  legend.addTo(map);
+  return legend;
+};
+
+const initializeMap = () => {
+  const map = Leaflet.map("mapid").setView(dhammaHouseCoordinates, 11);
+
+  Leaflet.tileLayer(
+    "https://api.mapbox.com/styles/v1/natanibar/cjkbf9gr8019f2rqllw7uz3ep/tiles/{z}/{x}/{y}?access_token={accessToken}",
+    {
+      attribution:
+        'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 18,
+      id: "mapbox.streets",
+      accessToken:
+        "pk.eyJ1IjoibmF0YW5pYmFyIiwiYSI6ImNqa2FnMTM5ajM1ajYzbG50dXptMDhjcDIifQ.Dae3BHZd9sexPOk_d76O1g"
+    }
+  ).addTo(map);
+
+  const info = createInfoBox();
+  info.addTo(map);
+  addDhammaHouseTo(map);
+  addNycBoroughsTo(map, info);
+  createLegend().addTo(map);
 };
 
 initializeMap();
