@@ -1,6 +1,7 @@
 import Leaflet from "leaflet";
 import oldStudentData from "./oldStudentData.json";
 import cssClasses from "./css/main.css";
+import dhammaHouseIconUrl from "./dhammaHouseIcon.png";
 
 const dhammaHouseCoordinates = [40.7544, -73.9905];
 
@@ -118,8 +119,17 @@ const addNycBoroughsTo = async (map, info) => {
     .bindPopup(renderTooltip);
 };
 
+const dhammaHouseIcon = L.icon({
+  iconUrl: dhammaHouseIconUrl,
+  iconSize: [30]
+  // iconAnchor: [22, 94],
+  // popupAnchor: [-3, -76],
+});
+
 const addDhammaHouseTo = map => {
-  const dhammaHouseMarker = Leaflet.marker(dhammaHouseCoordinates).addTo(map);
+  const dhammaHouseMarker = Leaflet.marker(dhammaHouseCoordinates, {
+    icon: dhammaHouseIcon
+  }).addTo(map);
   dhammaHouseMarker.bindPopup(
     "<a target='_blank' href='https://www.ny.us.dhamma.org/'>NYC Dhamma House</a><br /><br />247 W 38th St #1003<br />New York, NY 10018"
   );
