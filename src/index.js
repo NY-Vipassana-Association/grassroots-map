@@ -93,7 +93,8 @@ const addNycBoroughsTo = async (map, info) => {
       const { oldStudentCount } = getBoroughDataByName(boroughName);
 
       return `
-      There are ${oldStudentCount} old students in ${boroughName}
+      <p>There are ${oldStudentCount} old students in ${boroughName}.</p>
+      <p><a href="https://docs.google.com/document/d/1Q3S9qwr1akRhVcNKRcnCA7wWCQiMayVLTcoVwzCGBo4/edit" target="_blank">Apply to host a group sitting</a></p>
       `;
     });
 };
