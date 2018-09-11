@@ -1,7 +1,7 @@
 import Leaflet from "leaflet";
 import oldStudentData from "./oldStudentData.json";
 import cssClasses from "./css/main.css";
-import dhammaHouseIconUrl from "./dhammaHouseIcon.png";
+import dhammaHouseIconUrl from "./dhammaHouseIcon.svg";
 
 const dhammaHouseCoordinates = [40.7544, -73.9905];
 
