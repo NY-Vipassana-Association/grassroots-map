@@ -83,20 +83,39 @@ const addNycBoroughsTo = async (map, info) => {
     });
   };
 
+  const renderRegionalContactInfo = regionalContact => {
+    if (regionalContact) {
+      return `
+        <div class="${cssClasses.contact}">
+          <p>${regionalContact.name}</p>
+          <p>${regionalContact.emailAddress}</p>
+          <p>${regionalContact.phoneNumber}</p>
+        </div>
+      `;
+    } else {
+      return `
+      <p><a href="" target="_blank">Apply to start a local community planning team for your area</a></p>
+      `;
+    }
+  };
+  const renderTooltip = layer => {
+    const boroughName = layer.feature.properties.borough;
+    const boroughData = getBoroughDataByName(boroughName);
+    const { oldStudentCount } = boroughData;
+
+    return `
+      <p>There are ${oldStudentCount} old students in ${boroughName}.</p>
+      ${renderRegionalContactInfo(boroughData.regionalContact)}
+      <p><a href="https://docs.google.com/document/d/1Q3S9qwr1akRhVcNKRcnCA7wWCQiMayVLTcoVwzCGBo4/edit" target="_blank">Apply to host a group sitting</a></p>
+    `;
+  };
+
   geojsonBoroughsLayer = Leaflet.geoJson(nycBoroughsGeojson, {
     style: nycBoroughsStyle,
     onEachFeature
   })
     .addTo(map)
-    .bindPopup(layer => {
-      const boroughName = layer.feature.properties.borough;
-      const { oldStudentCount } = getBoroughDataByName(boroughName);
-
-      return `
-      <p>There are ${oldStudentCount} old students in ${boroughName}.</p>
-      <p><a href="https://docs.google.com/document/d/1Q3S9qwr1akRhVcNKRcnCA7wWCQiMayVLTcoVwzCGBo4/edit" target="_blank">Apply to host a group sitting</a></p>
-      `;
-    });
+    .bindPopup(renderTooltip);
 };
 
 const addDhammaHouseTo = map => {

@@ -17,6 +17,11 @@
   },
   {
     "name": "Brooklyn",
-    "oldStudentCount": 2393
+    "oldStudentCount": 2393,
+    "regionalContact": {
+      "name": "Gretchen Ostheimer",
+      "emailAddress": "Gretchen.Ostheimer@hofstra.edu",
+      "phoneNumber": "551-556-7353"
+    }
   }
 ]
