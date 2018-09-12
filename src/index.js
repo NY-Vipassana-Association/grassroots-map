@@ -126,10 +126,10 @@ const addNycBoroughsTo = async (map, info) => {
     .bindPopup(renderTooltip);
 
   geojsonBoroughsLayer.eachLayer(layer => {
-    layer._path.classList.add(
+    layer._path.setAttribute(
+      "data-test",
       mapRegionNameToClassName(mapRegionLayerToName(layer))
     );
-    console.log(layer._path);
   });
 };
 

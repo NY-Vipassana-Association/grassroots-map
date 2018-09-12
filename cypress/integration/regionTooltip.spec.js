@@ -1,7 +1,7 @@
 describe("Region Tooltip", () => {
   it("shows regional info when you click on a region", () => {
     cy.visit("");
-    cy.get(".region-manhattan")
+    cy.get("[data-test=region-manhattan]")
       .first()
       .click();
 
