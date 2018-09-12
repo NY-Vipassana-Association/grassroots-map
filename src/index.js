@@ -37,6 +37,12 @@ const nycBoroughsStyle = feature => {
   };
 };
 
+const mapRegionNameToClassName = name =>
+  `region-${name
+    .toLowerCase()
+    .split(" ")
+    .join("-")}`;
+
 const addNycBoroughsTo = async (map, info) => {
   let geojsonBoroughsLayer;
   let nycBoroughsResponse;
@@ -99,8 +105,9 @@ const addNycBoroughsTo = async (map, info) => {
       `;
     }
   };
+  const mapRegionLayerToName = layer => layer.feature.properties.borough;
   const renderTooltip = layer => {
-    const boroughName = layer.feature.properties.borough;
+    const boroughName = mapRegionLayerToName(layer);
     const boroughData = getBoroughDataByName(boroughName);
     const { oldStudentCount } = boroughData;
 
@@ -117,13 +124,18 @@ const addNycBoroughsTo = async (map, info) => {
   })
     .addTo(map)
     .bindPopup(renderTooltip);
+
+  geojsonBoroughsLayer.eachLayer(layer => {
+    layer._path.classList.add(
+      mapRegionNameToClassName(mapRegionLayerToName(layer))
+    );
+    console.log(layer._path);
+  });
 };
 
 const dhammaHouseIcon = L.icon({
   iconUrl: dhammaHouseIconUrl,
   iconSize: [30]
-  // iconAnchor: [22, 94],
-  // popupAnchor: [-3, -76],
 });
 
 const addDhammaHouseTo = map => {
