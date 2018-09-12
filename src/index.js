@@ -152,6 +152,7 @@ const createInfoBox = () => {
 
   info.onAdd = function() {
     this._div = Leaflet.DomUtil.create("div", cssClasses.info); // create a div with a class "info"
+    this._div.setAttribute("data-test", "hover-info-box");
     this.update();
     return this._div;
   };
