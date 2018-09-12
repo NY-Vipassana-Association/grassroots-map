@@ -181,6 +181,7 @@ const createLegend = () => {
       "div",
       `${cssClasses.info} ${cssClasses.legend}`
     );
+    div.setAttribute("data-test", "legend-box");
     const colorKeys = Object.keys(populationColors).map(divider =>
       parseInt(divider)
     );
