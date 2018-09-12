@@ -4,9 +4,16 @@ describe("Region Tooltip", () => {
     cy.get(".region-manhattan")
       .first()
       .click();
-    cy.contains("old students in Manhattan.");
+
+    const numManhattanOldStudents = 2782;
+    cy.contains(
+      `There are ${numManhattanOldStudents} old students in Manhattan.`
+    );
     cy.contains("Apply to host a group sitting");
     cy.get(".leaflet-popup-close-button").click();
-    cy.get("body").should("not.contain", "old students in Manhattan.");
+    cy.get("body").should(
+      "not.contain",
+      `There are ${numManhattanOldStudents} old students in Manhattan.`
+    );
   });
 });

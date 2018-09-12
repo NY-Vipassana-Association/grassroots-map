@@ -8,7 +8,7 @@
     "dev-server": "cd dist/ && http-server -c-1",
     "dev": "npm-run-all -p watch dev-server",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "surge --domain vipassana-grassroots-map.surge.sh ./dist/"
+    "deploy": "cypress run && surge --domain vipassana-grassroots-map.surge.sh ./dist/"
   },
   "author": "",
   "license": "ISC",
