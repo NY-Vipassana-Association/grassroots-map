@@ -3,6 +3,7 @@ import oldStudentData from "./oldStudentData.json";
 import cssClasses from "./css/main.css";
 import dhammaHouseIconUrl from "./dhammaHouseIcon.svg";
 import groupSittings from "./groupSittings.json";
+import groupSittingIconUrl from "./groupSittingIcon.svg";
 
 const dhammaHouseCoordinates = [40.7544, -73.9905];
 
@@ -134,14 +135,15 @@ const addNycBoroughsTo = async (map, info) => {
   });
 };
 
-const dhammaHouseIcon = L.icon({
-  iconUrl: dhammaHouseIconUrl,
-  iconSize: [30]
-});
-
 const addGroupSittingsTo = map => {
+  const groupSittingIcon = L.icon({
+    iconUrl: groupSittingIconUrl,
+    iconSize: [30]
+  });
   groupSittings.forEach(groupSitting => {
-    Leaflet.marker([groupSitting.lat, groupSitting.lon])
+    Leaflet.marker([groupSitting.lat, groupSitting.lon], {
+      icon: groupSittingIcon
+    })
       .addTo(map)
       .bindPopup(
         `<h3>Group Sitting</h3>Host: ${groupSitting.name}<br /><br />${
@@ -156,6 +158,11 @@ const addGroupSittingsTo = map => {
 };
 
 const addDhammaHouseTo = map => {
+  const dhammaHouseIcon = L.icon({
+    iconUrl: dhammaHouseIconUrl,
+    iconSize: [30]
+  });
+
   const dhammaHouseMarker = Leaflet.marker(dhammaHouseCoordinates, {
     icon: dhammaHouseIcon
   }).addTo(map);
