@@ -2,6 +2,7 @@ import Leaflet from "leaflet";
 import oldStudentData from "./oldStudentData.json";
 import cssClasses from "./css/main.css";
 import dhammaHouseIconUrl from "./dhammaHouseIcon.svg";
+import groupSittings from "./groupSittings.json";
 
 const dhammaHouseCoordinates = [40.7544, -73.9905];
 
@@ -138,6 +139,20 @@ const dhammaHouseIcon = L.icon({
   iconSize: [30]
 });
 
+const addGroupSittingsTo = map => {
+  groupSittings.forEach(groupSitting => {
+    Leaflet.marker([groupSitting.lat, groupSitting.lon])
+      .addTo(map)
+      .bindPopup(
+        `<h3>Group Sitting</h3>Host: ${groupSitting.name}<br /><br />${
+          groupSitting.address
+        } (contact host for full address)<br /><br />${
+          groupSitting.time
+        }<br /><br />${groupSitting.email}<br />${groupSitting.phoneNumber}`
+      );
+  });
+};
+
 const addDhammaHouseTo = map => {
   const dhammaHouseMarker = Leaflet.marker(dhammaHouseCoordinates, {
     icon: dhammaHouseIcon
@@ -222,6 +237,7 @@ const initializeMap = () => {
   const info = createInfoBox();
   info.addTo(map);
   addDhammaHouseTo(map);
+  addGroupSittingsTo(map);
   addNycBoroughsTo(map, info);
   createLegend().addTo(map);
 };
