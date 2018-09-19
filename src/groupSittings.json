@@ -1,11 +1,19 @@
 [
   {
-    "lat": "41.51",
-    "lon": "-73.96",
+    "lat": "41.5121",
+    "lon": "-73.9690",
     "name": "Dan Doniger",
     "address": "Elm St, Beacon, NY 12508",
     "time": "1st and 3rd Sundays, 9am – 10am",
     "phoneNumber": "(917) 736-6802",
     "email": "danbasho@gmail.com"
+  },
+  {
+    "lat": "40.5766",
+    "lon": "-74.3915",
+    "name": "Ravi",
+    "address": "Oak Tree Avenue, South Plainfield, NJ 07080",
+    "time": "Saturday 7:30a – 8:30a",
+    "phoneNumber": "(732) 589-9634"
   }
 ]
