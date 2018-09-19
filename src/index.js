@@ -94,15 +94,15 @@ const addNycBoroughsTo = async (map, info) => {
   const renderRegionalContactInfo = regionalContact => {
     if (regionalContact) {
       return `
-        <div class="${cssClasses.contact}">
-          <p>${regionalContact.name}</p>
-          <p>${regionalContact.emailAddress}</p>
-          <p>${regionalContact.phoneNumber}</p>
-        </div>
+        <p>Interested in connecting with the local Brooklyn old-student community? Reach out to our Brooklyn Community Organizer, ${
+          regionalContact.name
+        }, at ${regionalContact.emailAddress} or ${
+        regionalContact.phoneNumber
+      }.</p>
       `;
     } else {
       return `
-      <p><a href="" target="_blank">Apply to start a local community planning team for your area</a></p>
+      <p>If you are interested in joining your local community planning team, please reach out to our Dhamma Service Committee at dhammaservice.nyva@gmail.com or (413) 438-7821.</p>
       `;
     }
   };
@@ -148,7 +148,9 @@ const addGroupSittingsTo = map => {
           groupSitting.address
         } (contact host for full address)<br /><br />${
           groupSitting.time
-        }<br /><br />${groupSitting.email}<br />${groupSitting.phoneNumber}`
+        }<br />${
+          groupSitting.email ? `<br />${groupSitting.email}` : ""
+        }<br />${groupSitting.phoneNumber}`
       );
   });
 };
