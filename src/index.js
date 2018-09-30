@@ -228,8 +228,8 @@ const createLegend = () => {
   return legend;
 };
 
-const initializeMap = () => {
-  const map = Leaflet.map("mapid").setView(dhammaHouseCoordinates, 11);
+const initializeMap = element => {
+  const map = Leaflet.map(element).setView(dhammaHouseCoordinates, 11);
 
   Leaflet.tileLayer(
     "https://api.mapbox.com/styles/v1/natanibar/cjkbf9gr8019f2rqllw7uz3ep/tiles/{z}/{x}/{y}?access_token={accessToken}",
@@ -251,4 +251,4 @@ const initializeMap = () => {
   createLegend().addTo(map);
 };
 
-initializeMap();
+initializeMap(document.querySelector("#mapid"));
