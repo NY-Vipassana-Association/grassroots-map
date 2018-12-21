@@ -1,0 +1,9 @@
+{
+  "moduleResolution": "node",
+  "noEmit": true,
+  "noUnusedLocals": true,
+  "noUnusedParameters": true,
+  "resolveJsonModule": true,
+  "strict": true,
+  "include": ["src/**/*"]
+}

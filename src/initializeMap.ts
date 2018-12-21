@@ -136,7 +136,7 @@ const addNycBoroughsTo = async (map, info) => {
 };
 
 const addGroupSittingsTo = map => {
-  const groupSittingIcon = L.icon({
+  const groupSittingIcon = Leaflet.icon({
     iconUrl: groupSittingIconUrl,
     iconSize: [30]
   });
@@ -158,7 +158,7 @@ const addGroupSittingsTo = map => {
 };
 
 const addDhammaHouseTo = map => {
-  const dhammaHouseIcon = L.icon({
+  const dhammaHouseIcon = Leaflet.icon({
     iconUrl: dhammaHouseIconUrl,
     iconSize: [30]
   });
@@ -198,10 +198,10 @@ const createInfoBox = () => {
 };
 
 const createLegend = () => {
-  const legend = L.control({ position: "bottomright" });
+  const legend = Leaflet.control({ position: "bottomright" });
 
   legend.onAdd = function(map) {
-    const div = L.DomUtil.create(
+    const div = Leaflet.DomUtil.create(
       "div",
       `${cssClasses.info} ${cssClasses.legend}`
     );
