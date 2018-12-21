@@ -1,9 +1,23 @@
 import Leaflet from "leaflet";
-import oldStudentData from "./oldStudentData.json";
+import oldStudentDataJson from "./oldStudentData.json";
 import cssClasses from "./css/main.css";
 import dhammaHouseIconUrl from "./dhammaHouseIcon.svg";
 import groupSittings from "./groupSittings.json";
 import groupSittingIconUrl from "./groupSittingIcon.svg";
+
+interface IRegionalContact {
+  name: string;
+  emailAddress: string;
+  phoneNumber: string;
+}
+
+interface IOldStudentDataItem {
+  name: string;
+  oldStudentCount: number;
+  regionalContact?: IRegionalContact;
+}
+
+const oldStudentData: IOldStudentDataItem[] = oldStudentDataJson;
 
 const dhammaHouseCoordinates = [40.7544, -73.9905];
 
@@ -17,7 +31,7 @@ const populationColors = {
   2500: "#800026"
 };
 
-function getColor(count) {
+function getColor(count: IOldStudentDataItem["oldStudentCount"]) {
   const biggestKeySmallerThanCount = Object.keys(populationColors)
     .map(key => parseInt(key))
     .reduce((prev, curr) => (curr > prev && curr <= count ? curr : prev), 0);
