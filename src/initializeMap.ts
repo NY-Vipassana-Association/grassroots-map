@@ -115,6 +115,8 @@ const addNycBoroughsTo = async (map: Leaflet.Map, info) => {
 
     if (
       !Leaflet.Browser.ie &&
+      // @ts-ignore "opera" is supported but missing from Browser types
+      // https://leafletjs.com/reference-1.3.4.html#browser
       !Leaflet.Browser.opera &&
       !Leaflet.Browser.edge
     ) {
@@ -124,7 +126,7 @@ const addNycBoroughsTo = async (map: Leaflet.Map, info) => {
     info.update(layer.feature.properties);
   };
 
-  const onEachFeature = (feature, layer) => {
+  const onEachFeature = (_feature, layer) => {
     layer.on({
       mouseover: highlightFeature,
       mouseout: resetHighlight
