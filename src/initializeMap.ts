@@ -90,12 +90,11 @@ const addNycBoroughsTo = async (map: Leaflet.Map, info) => {
       "http://data.beta.nyc//dataset/68c0332f-c3bb-4a78-a0c1-32af515892d6/resource/7c164faa-4458-4ff2-9ef0-09db00b509ef/download/42c737fd496f4d6683bba25fb0e86e1dnycboroughboundaries.geojson"
     );
   } catch (e) {
-    console.log("error loading nyc boroughs");
+    console.error("error loading nyc boroughs");
     return;
   }
 
   const nycBoroughsGeojson: IRegionFeaturesGeojson = await nycBoroughsResponse.json();
-  console.log(nycBoroughsGeojson);
 
   function resetHighlight(e) {
     geojsonBoroughsLayer.resetStyle(e.target);
