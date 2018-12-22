@@ -178,7 +178,7 @@ const addNycBoroughsTo = async (map: Leaflet.Map, info) => {
 const addGroupSittingsTo = (map: Leaflet.Map) => {
   const groupSittingIcon = Leaflet.icon({
     iconUrl: groupSittingIconUrl,
-    iconSize: [30]
+    iconSize: [30, 30]
   });
   groupSittings.forEach(groupSitting => {
     Leaflet.marker([groupSitting.lat, groupSitting.lon], {
