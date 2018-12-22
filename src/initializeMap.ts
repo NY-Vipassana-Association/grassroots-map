@@ -238,7 +238,7 @@ const createInfoBox = () => {
 const createLegend = () => {
   const legend = Leaflet.control({ position: "bottomright" });
 
-  legend.onAdd = function(map) {
+  legend.onAdd = function() {
     const div = Leaflet.DomUtil.create(
       "div",
       `${cssClasses.info} ${cssClasses.legend}`
@@ -266,7 +266,7 @@ const createLegend = () => {
   return legend;
 };
 
-const initializeMap = element => {
+const initializeMap = (element: HTMLElement) => {
   const map = Leaflet.map(element).setView(dhammaHouseCoordinates, 11);
 
   Leaflet.tileLayer(
