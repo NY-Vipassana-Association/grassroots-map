@@ -9,20 +9,33 @@ import { IOldStudentDataItem } from "./types";
 const oldStudentData: IOldStudentDataItem[] = oldStudentDataJson;
 const dhammaHouseCoordinates = [40.7544, -73.9905];
 
+enum populationCounts {
+  level1 = 0,
+  level2 = 200,
+  level3 = 500,
+  level4 = 1000,
+  level5 = 1500,
+  level6 = 2000,
+  level7 = 2500
+}
+
 const populationColors = {
-  0: "#FED976",
-  200: "#FEB24C",
-  500: "#FD8D3C",
-  1000: "#FC4E2A",
-  1500: "#E31A1C",
-  2000: "#BD0026",
-  2500: "#800026"
+  [populationCounts.level1]: "#FED976",
+  [populationCounts.level2]: "#FEB24C",
+  [populationCounts.level3]: "#FD8D3C",
+  [populationCounts.level4]: "#FC4E2A",
+  [populationCounts.level5]: "#E31A1C",
+  [populationCounts.level6]: "#BD0026",
+  [populationCounts.level7]: "#800026"
 };
 
 function getColor(count: IOldStudentDataItem["oldStudentCount"]) {
-  const biggestKeySmallerThanCount = Object.keys(populationColors)
+  const biggestKeySmallerThanCount: populationCounts = Object.keys(
+    populationColors
+  )
     .map(key => parseInt(key))
     .reduce((prev, curr) => (curr > prev && curr <= count ? curr : prev), 0);
+
   return populationColors[biggestKeySmallerThanCount];
 }
 
