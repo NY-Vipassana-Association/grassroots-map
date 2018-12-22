@@ -1,4 +1,5 @@
-import { GeoJsonTypes, Feature, GeometryObject } from "geojson";
+import Leaflet from "leaflet";
+import geojson from "geojson";
 
 export interface IRegionalContact {
   name: string;
@@ -13,8 +14,8 @@ export interface IOldStudentDataItem {
 }
 
 export interface IGroupSitting {
-  lat: string;
-  lon: string;
+  lat: number;
+  lon: number;
   name: string;
   address: string;
   time: string;
@@ -27,9 +28,13 @@ export interface Borough {
   boroughCode: number;
 }
 
-export type IRegionFeature = Feature<GeometryObject, Borough>;
-
-export interface IRegionFeaturesGeojson {
-  type: GeoJsonTypes;
-  features: IRegionFeature[];
+export interface IRegionGeoJSON extends Leaflet.GeoJSON<Borough> {
+  feature: geojson.Feature<geojson.MultiPoint, Borough>;
+  _path: SVGPathElement;
 }
+
+export type IRegionFeature = geojson.Feature<geojson.GeometryObject, Borough>;
+export type IRegionFeatureCollection = geojson.FeatureCollection<
+  geojson.GeometryObject,
+  Borough
+>;

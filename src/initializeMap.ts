@@ -13,8 +13,12 @@ import {
   IOldStudentDataItem,
   IRegionalContact,
   IRegionFeature,
-  IRegionFeaturesGeojson
+  IRegionGeoJSON,
+  IRegionFeatureCollection
 } from "./types";
+
+// todo add type
+type InfoBox = any;
 
 const oldStudentData: IOldStudentDataItem[] = oldStudentDataJson;
 const groupSittings: IGroupSitting[] = groupSittingsJSON;
@@ -68,7 +72,9 @@ const getFeatureColor = (feature: IRegionFeature) => {
 
 const nycBoroughsStyle = (feature?: IRegionFeature) => {
   return {
-    fillColor: feature ? getFeatureColor(feature) : populationCounts.level1,
+    fillColor: feature
+      ? getFeatureColor(feature)
+      : populationCounts.level1.toString(),
     weight: 2,
     opacity: 1,
     color: "#ac8686",
@@ -84,8 +90,19 @@ const mapRegionNameToClassName = (
     .split(" ")
     .join("-")}`;
 
-const addNycBoroughsTo = async (map: Leaflet.Map, info) => {
-  let geojsonBoroughsLayer;
+const setupResetHighlighter = (
+  geojsonBoroughsLayer: IRegionGeoJSON,
+  info: InfoBox
+) => {
+  return function resetHighlight(e: Leaflet.LeafletEvent) {
+    geojsonBoroughsLayer.resetStyle(e.target);
+    info.update();
+  };
+};
+
+const addNycBoroughsTo = async (map: Leaflet.Map, info: InfoBox) => {
+  // todo add type
+  let geojsonBoroughsLayer: any;
   let nycBoroughsResponse;
   try {
     nycBoroughsResponse = await fetch(
@@ -96,15 +113,10 @@ const addNycBoroughsTo = async (map: Leaflet.Map, info) => {
     return;
   }
 
-  const nycBoroughsGeojson: IRegionFeaturesGeojson = await nycBoroughsResponse.json();
+  const nycBoroughsGeojson: IRegionFeatureCollection = await nycBoroughsResponse.json();
 
-  function resetHighlight(e) {
-    geojsonBoroughsLayer.resetStyle(e.target);
-    info.update();
-  }
-
-  const highlightFeature = e => {
-    var layer = e.target;
+  const highlightFeature = (e: Leaflet.LeafletEvent) => {
+    var layer: IRegionGeoJSON = e.target;
 
     layer.setStyle({
       weight: 5,
@@ -126,10 +138,10 @@ const addNycBoroughsTo = async (map: Leaflet.Map, info) => {
     info.update(layer.feature.properties);
   };
 
-  const onEachFeature = (_feature, layer) => {
+  const onEachFeature = (_feature: IRegionFeature, layer: Leaflet.Layer) => {
     layer.on({
       mouseover: highlightFeature,
-      mouseout: resetHighlight
+      mouseout: setupResetHighlighter(geojsonBoroughsLayer, info)
     });
   };
 
@@ -148,11 +160,18 @@ const addNycBoroughsTo = async (map: Leaflet.Map, info) => {
       `;
     }
   };
-  const mapRegionLayerToName = (layer: Leaflet.Layer) =>
+
+  const mapRegionLayerToName = (layer: IRegionGeoJSON) =>
     layer.feature.properties.borough;
 
   const renderTooltip = (layer: Leaflet.Layer) => {
-    const boroughName = mapRegionLayerToName(layer);
+    // renderTooltip takes a IRegionGeoJSON object as its first parameter.
+    // IRegionGeoJSON extends Layer (via other intermediate subclasses of Layer)
+    // so I would expect bindPopup to accept a function with GeoJSON as its
+    // first parameter. For some reason I don't understand, TypeScript still
+    // throws an error, since renderTooltip
+    const regionGeoJSON = layer as IRegionGeoJSON;
+    const boroughName = mapRegionLayerToName(regionGeoJSON);
     const boroughData = getBoroughDataByName(boroughName);
 
     return `
@@ -172,9 +191,10 @@ const addNycBoroughsTo = async (map: Leaflet.Map, info) => {
     .bindPopup(renderTooltip);
 
   geojsonBoroughsLayer.eachLayer((layer: Leaflet.Layer) => {
-    layer._path.setAttribute(
+    const regionGeoJSON = layer as IRegionGeoJSON;
+    regionGeoJSON._path.setAttribute(
       "data-test",
-      mapRegionNameToClassName(mapRegionLayerToName(layer))
+      mapRegionNameToClassName(mapRegionLayerToName(regionGeoJSON))
     );
   });
 };
@@ -201,10 +221,10 @@ const addGroupSittingsTo = (map: Leaflet.Map) => {
   });
 };
 
-const addDhammaHouseTo = map => {
+const addDhammaHouseTo = (map: Leaflet.Map) => {
   const dhammaHouseIcon = Leaflet.icon({
     iconUrl: dhammaHouseIconUrl,
-    iconSize: [30]
+    iconSize: [30, 30]
   });
 
   const dhammaHouseMarker = Leaflet.marker(dhammaHouseCoordinates, {
@@ -215,7 +235,7 @@ const addDhammaHouseTo = map => {
   );
 };
 
-const createInfoBox = () => {
+const createInfoBox = (): InfoBox => {
   const info = Leaflet.control();
 
   info.onAdd = function() {
