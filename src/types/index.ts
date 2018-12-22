@@ -12,6 +12,16 @@ export interface IOldStudentDataItem {
   regionalContact?: IRegionalContact;
 }
 
+export interface IGroupSitting {
+  lat: string;
+  lon: string;
+  name: string;
+  address: string;
+  time: string;
+  phoneNumber: string;
+  email?: string;
+}
+
 export interface Borough {
   borough: string;
   boroughCode: number;

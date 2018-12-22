@@ -1,7 +1,7 @@
 import Leaflet from "leaflet";
 
 import oldStudentDataJson from "./oldStudentData.json";
-import groupSittings from "./groupSittings.json";
+import groupSittingsJSON from "./groupSittings.json";
 
 import cssClasses from "./css/main.css";
 import dhammaHouseIconUrl from "./dhammaHouseIcon.svg";
@@ -9,6 +9,7 @@ import groupSittingIconUrl from "./groupSittingIcon.svg";
 
 import {
   Borough,
+  IGroupSitting,
   IOldStudentDataItem,
   IRegionalContact,
   IRegionFeature,
@@ -16,6 +17,7 @@ import {
 } from "./types";
 
 const oldStudentData: IOldStudentDataItem[] = oldStudentDataJson;
+const groupSittings: IGroupSitting[] = groupSittingsJSON;
 const dhammaHouseCoordinates = { lat: 40.7544, lng: -73.9905 };
 
 enum populationCounts {
