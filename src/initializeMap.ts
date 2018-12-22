@@ -10,6 +10,7 @@ import groupSittingIconUrl from "./groupSittingIcon.svg";
 import {
   Borough,
   IOldStudentDataItem,
+  IRegionalContact,
   IRegionFeature,
   IRegionFeaturesGeojson
 } from "./types";
@@ -81,7 +82,7 @@ const mapRegionNameToClassName = (
     .split(" ")
     .join("-")}`;
 
-const addNycBoroughsTo = async (map, info) => {
+const addNycBoroughsTo = async (map: Leaflet.Map, info) => {
   let geojsonBoroughsLayer;
   let nycBoroughsResponse;
   try {
@@ -129,7 +130,7 @@ const addNycBoroughsTo = async (map, info) => {
     });
   };
 
-  const renderRegionalContactInfo = regionalContact => {
+  const renderRegionalContactInfo = (regionalContact?: IRegionalContact) => {
     if (regionalContact) {
       return `
         <p>Interested in connecting with the local Brooklyn old-student community? Reach out to our Brooklyn Community Organizer, ${
@@ -144,15 +145,18 @@ const addNycBoroughsTo = async (map, info) => {
       `;
     }
   };
-  const mapRegionLayerToName = layer => layer.feature.properties.borough;
-  const renderTooltip = layer => {
+  const mapRegionLayerToName = (layer: Leaflet.Layer) =>
+    layer.feature.properties.borough;
+
+  const renderTooltip = (layer: Leaflet.Layer) => {
     const boroughName = mapRegionLayerToName(layer);
     const boroughData = getBoroughDataByName(boroughName);
-    const { oldStudentCount } = boroughData;
 
     return `
-      <p>There are ${oldStudentCount} old students in ${boroughName}.</p>
-      ${renderRegionalContactInfo(boroughData.regionalContact)}
+      <p>There are ${
+        boroughData ? boroughData.oldStudentCount : populationCounts.level1
+      } old students in ${boroughName}.</p>
+      ${renderRegionalContactInfo(boroughData && boroughData.regionalContact)}
       <p><a href="https://docs.google.com/document/d/1Q3S9qwr1akRhVcNKRcnCA7wWCQiMayVLTcoVwzCGBo4/edit" target="_blank">Apply to host a group sitting</a></p>
     `;
   };
@@ -164,7 +168,7 @@ const addNycBoroughsTo = async (map, info) => {
     .addTo(map)
     .bindPopup(renderTooltip);
 
-  geojsonBoroughsLayer.eachLayer(layer => {
+  geojsonBoroughsLayer.eachLayer((layer: Leaflet.Layer) => {
     layer._path.setAttribute(
       "data-test",
       mapRegionNameToClassName(mapRegionLayerToName(layer))
@@ -172,7 +176,7 @@ const addNycBoroughsTo = async (map, info) => {
   });
 };
 
-const addGroupSittingsTo = map => {
+const addGroupSittingsTo = (map: Leaflet.Map) => {
   const groupSittingIcon = Leaflet.icon({
     iconUrl: groupSittingIconUrl,
     iconSize: [30]
