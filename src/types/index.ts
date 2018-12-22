@@ -12,13 +12,12 @@ export interface IOldStudentDataItem {
   regionalContact?: IRegionalContact;
 }
 
-export type IRegionFeature = Feature<
-  GeometryObject,
-  {
-    borough: string;
-    boroughCode: number;
-  }
->;
+export interface Borough {
+  borough: string;
+  boroughCode: number;
+}
+
+export type IRegionFeature = Feature<GeometryObject, Borough>;
 
 export interface IRegionFeaturesGeojson {
   type: GeoJsonTypes;

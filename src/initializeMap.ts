@@ -8,6 +8,7 @@ import dhammaHouseIconUrl from "./dhammaHouseIcon.svg";
 import groupSittingIconUrl from "./groupSittingIcon.svg";
 
 import {
+  Borough,
   IOldStudentDataItem,
   IRegionFeature,
   IRegionFeaturesGeojson
@@ -218,16 +219,17 @@ const createInfoBox = () => {
   };
 
   // method that we will use to update the control based on feature properties passed
-  info.update = function(props) {
-    this._div.innerHTML =
-      "<h4>Vipassana Grassroots Map</h4>" +
-      (props
+  info.update = function(borough: Borough) {
+    const boroughData = getBoroughDataByName(borough.borough);
+    const infoBoxContent =
+      borough && boroughData
         ? "<b>" +
-          props.borough +
+          borough.borough +
           "</b><br />" +
-          getBoroughDataByName(props.borough).oldStudentCount +
+          boroughData.oldStudentCount +
           " old students"
-        : "Hover over a region");
+        : "Hover over a region";
+    this._div.innerHTML = "<h4>Vipassana Grassroots Map</h4>" + infoBoxContent;
   };
 
   return info;
