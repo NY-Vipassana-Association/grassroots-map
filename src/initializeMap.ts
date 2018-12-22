@@ -4,21 +4,9 @@ import cssClasses from "./css/main.css";
 import dhammaHouseIconUrl from "./dhammaHouseIcon.svg";
 import groupSittings from "./groupSittings.json";
 import groupSittingIconUrl from "./groupSittingIcon.svg";
-
-interface IRegionalContact {
-  name: string;
-  emailAddress: string;
-  phoneNumber: string;
-}
-
-interface IOldStudentDataItem {
-  name: string;
-  oldStudentCount: number;
-  regionalContact?: IRegionalContact;
-}
+import { IOldStudentDataItem } from "./types";
 
 const oldStudentData: IOldStudentDataItem[] = oldStudentDataJson;
-
 const dhammaHouseCoordinates = [40.7544, -73.9905];
 
 const populationColors = {
