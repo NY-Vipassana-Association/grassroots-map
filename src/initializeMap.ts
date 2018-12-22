@@ -90,16 +90,6 @@ const mapRegionNameToClassName = (
     .split(" ")
     .join("-")}`;
 
-const setupResetHighlighter = (
-  geojsonBoroughsLayer: IRegionGeoJSON,
-  info: InfoBox
-) => {
-  return function resetHighlight(e: Leaflet.LeafletEvent) {
-    geojsonBoroughsLayer.resetStyle(e.target);
-    info.update();
-  };
-};
-
 const addNycBoroughsTo = async (map: Leaflet.Map, info: InfoBox) => {
   // todo add type
   let geojsonBoroughsLayer: any;
@@ -141,7 +131,10 @@ const addNycBoroughsTo = async (map: Leaflet.Map, info: InfoBox) => {
   const onEachFeature = (_feature: IRegionFeature, layer: Leaflet.Layer) => {
     layer.on({
       mouseover: highlightFeature,
-      mouseout: setupResetHighlighter(geojsonBoroughsLayer, info)
+      mouseout: (e: Leaflet.LeafletEvent) => {
+        geojsonBoroughsLayer.resetStyle(e.target);
+        info.update();
+      }
     });
   };
 
@@ -236,17 +229,18 @@ const addDhammaHouseTo = (map: Leaflet.Map) => {
 };
 
 const createInfoBox = (): InfoBox => {
+  // @ts-ignore todo
   const info = Leaflet.control();
 
-  info.onAdd = function() {
-    this._div = Leaflet.DomUtil.create("div", cssClasses.info); // create a div with a class "info"
-    this._div.setAttribute("data-test", "hover-info-box");
-    this.update();
-    return this._div;
+  info.onAdd = () => {
+    info._div = Leaflet.DomUtil.create("div", cssClasses.info); // create a div with a class "info"
+    info._div.setAttribute("data-test", "hover-info-box");
+    info.update();
+    return info._div;
   };
 
   // method that we will use to update the control based on feature properties passed
-  info.update = function(borough?: Borough) {
+  info.update = (borough?: Borough) => {
     const boroughData = borough && getBoroughDataByName(borough.borough);
 
     const infoBoxContent =
@@ -257,13 +251,14 @@ const createInfoBox = (): InfoBox => {
           boroughData.oldStudentCount +
           " old students"
         : "Hover over a region";
-    this._div.innerHTML = "<h4>Vipassana Grassroots Map</h4>" + infoBoxContent;
+    info._div.innerHTML = "<h4>Vipassana Grassroots Map</h4>" + infoBoxContent;
   };
 
   return info;
 };
 
 const createLegend = () => {
+  // @ts-ignore todo
   const legend = Leaflet.control({ position: "bottomright" });
 
   legend.onAdd = function() {
