@@ -1,3 +1,5 @@
+import { GeoJsonTypes } from "geojson";
+
 export interface IRegionalContact {
   name: string;
   emailAddress: string;
@@ -19,5 +21,6 @@ export interface IRegionFeature {
 }
 
 export interface IRegionFeaturesGeojson {
+  type: GeoJsonTypes;
   features: IRegionFeature[];
 }

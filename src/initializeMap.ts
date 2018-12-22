@@ -66,7 +66,9 @@ const nycBoroughsStyle = (feature: IRegionFeature) => {
   };
 };
 
-const mapRegionNameToClassName = name =>
+const mapRegionNameToClassName = (
+  name: IRegionFeature["properties"]["borough"]
+) =>
   `region-${name
     .toLowerCase()
     .split(" ")
@@ -148,7 +150,7 @@ const addNycBoroughsTo = async (map, info) => {
     `;
   };
 
-  geojsonBoroughsLayer = Leaflet.geoJson(nycBoroughsGeojson, {
+  geojsonBoroughsLayer = Leaflet.geoJSON(nycBoroughsGeojson, {
     style: nycBoroughsStyle,
     onEachFeature
   })
