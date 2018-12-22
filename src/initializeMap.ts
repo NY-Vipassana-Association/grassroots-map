@@ -247,9 +247,8 @@ const createInfoBox = (): InfoBox => {
 
   // method that we will use to update the control based on feature properties passed
   info.update = function(borough?: Borough) {
-    const boroughData = borough
-      ? getBoroughDataByName(borough.borough)
-      : undefined;
+    const boroughData = borough && getBoroughDataByName(borough.borough);
+
     const infoBoxContent =
       borough && boroughData
         ? "<b>" +
