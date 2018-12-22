@@ -15,7 +15,7 @@ import {
 } from "./types";
 
 const oldStudentData: IOldStudentDataItem[] = oldStudentDataJson;
-const dhammaHouseCoordinates = [40.7544, -73.9905];
+const dhammaHouseCoordinates = { lat: 40.7544, lng: -73.9905 };
 
 enum populationCounts {
   level1 = 0,
