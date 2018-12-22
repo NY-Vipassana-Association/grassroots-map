@@ -1,4 +1,4 @@
-import { GeoJsonTypes } from "geojson";
+import { GeoJsonTypes, Feature, GeometryObject } from "geojson";
 
 export interface IRegionalContact {
   name: string;
@@ -12,13 +12,13 @@ export interface IOldStudentDataItem {
   regionalContact?: IRegionalContact;
 }
 
-export interface IRegionFeature {
-  id: number;
-  properties: {
+export type IRegionFeature = Feature<
+  GeometryObject,
+  {
     borough: string;
     boroughCode: number;
-  };
-}
+  }
+>;
 
 export interface IRegionFeaturesGeojson {
   type: GeoJsonTypes;

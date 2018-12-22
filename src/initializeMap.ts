@@ -54,11 +54,17 @@ const getBoroughDataByName = (name: IOldStudentDataItem["name"]) => {
   return boroughDataItem;
 };
 
-const nycBoroughsStyle = (feature: IRegionFeature) => {
+const getFeatureColor = (feature: IRegionFeature) => {
   const boroughData = getBoroughDataByName(feature.properties.borough);
 
+  return getColor(
+    boroughData ? boroughData.oldStudentCount : populationCounts.level1
+  );
+};
+
+const nycBoroughsStyle = (feature?: IRegionFeature) => {
   return {
-    fillColor: getColor(boroughData ? boroughData.oldStudentCount : 0),
+    fillColor: feature ? getFeatureColor(feature) : populationCounts.level1,
     weight: 2,
     opacity: 1,
     color: "#ac8686",
