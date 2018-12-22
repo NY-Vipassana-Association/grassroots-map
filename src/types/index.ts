@@ -9,3 +9,15 @@ export interface IOldStudentDataItem {
   oldStudentCount: number;
   regionalContact?: IRegionalContact;
 }
+
+export interface IRegionFeature {
+  id: number;
+  properties: {
+    borough: string;
+    boroughCode: number;
+  };
+}
+
+export interface IRegionFeaturesGeojson {
+  features: IRegionFeature[];
+}

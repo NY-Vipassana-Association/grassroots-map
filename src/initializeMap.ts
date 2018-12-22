@@ -1,10 +1,17 @@
 import Leaflet from "leaflet";
+
 import oldStudentDataJson from "./oldStudentData.json";
+import groupSittings from "./groupSittings.json";
+
 import cssClasses from "./css/main.css";
 import dhammaHouseIconUrl from "./dhammaHouseIcon.svg";
-import groupSittings from "./groupSittings.json";
 import groupSittingIconUrl from "./groupSittingIcon.svg";
-import { IOldStudentDataItem } from "./types";
+
+import {
+  IOldStudentDataItem,
+  IRegionFeature,
+  IRegionFeaturesGeojson
+} from "./types";
 
 const oldStudentData: IOldStudentDataItem[] = oldStudentDataJson;
 const dhammaHouseCoordinates = [40.7544, -73.9905];
@@ -39,14 +46,19 @@ function getColor(count: IOldStudentDataItem["oldStudentCount"]) {
   return populationColors[biggestKeySmallerThanCount];
 }
 
-const getBoroughDataByName = name =>
-  oldStudentData.find(borough => borough.name === name);
+const getBoroughDataByName = (name: IOldStudentDataItem["name"]) => {
+  const boroughDataItem = oldStudentData.find(borough => borough.name === name);
+  if (!boroughDataItem)
+    console.error("Could not find old student data for borough");
 
-const nycBoroughsStyle = feature => {
+  return boroughDataItem;
+};
+
+const nycBoroughsStyle = (feature: IRegionFeature) => {
+  const boroughData = getBoroughDataByName(feature.properties.borough);
+
   return {
-    fillColor: getColor(
-      getBoroughDataByName(feature.properties.borough).oldStudentCount
-    ),
+    fillColor: getColor(boroughData ? boroughData.oldStudentCount : 0),
     weight: 2,
     opacity: 1,
     color: "#ac8686",
@@ -72,7 +84,8 @@ const addNycBoroughsTo = async (map, info) => {
     return;
   }
 
-  const nycBoroughsGeojson = await nycBoroughsResponse.json();
+  const nycBoroughsGeojson: IRegionFeaturesGeojson = await nycBoroughsResponse.json();
+  console.log(nycBoroughsGeojson);
 
   function resetHighlight(e) {
     geojsonBoroughsLayer.resetStyle(e.target);
