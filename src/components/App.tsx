@@ -6,6 +6,7 @@ import DhammaHouseMarker from "./DhammaHouseMarker";
 import HoveredRegionInfoBox from "./HoveredRegionInfoBox";
 import RegionLayer from "./RegionLayer/index";
 import GroupSittingMarker from "./GroupSittingMarker";
+import MapLegend from "./MapLegend";
 
 import { IRegionGeoJSON, IGroupSitting } from "../types/index";
 import groupSittingsJSON from "../groupSittings.json";
@@ -52,6 +53,7 @@ export default class App extends React.Component<{}, IState> {
           <DhammaHouseMarker />
         </Map>
         <HoveredRegionInfoBox hoveredRegion={hoveredRegion} />
+        <MapLegend />
       </div>
     );
   }

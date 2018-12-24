@@ -13,7 +13,7 @@ export enum populationCounts {
   level7 = 2500
 }
 
-const populationColors = {
+export const populationColors = {
   [populationCounts.level1]: "#FED976",
   [populationCounts.level2]: "#FEB24C",
   [populationCounts.level3]: "#FD8D3C",
