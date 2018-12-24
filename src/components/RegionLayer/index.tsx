@@ -11,7 +11,7 @@ import {
 import RegionLayerPopup from "./RegionLayerPopup";
 import { LeafletEvent } from "leaflet";
 
-const nycBoroughsData = nycBoroughsJSON as IRegionFeatureCollection;
+const nycBoroughsData = (nycBoroughsJSON as unknown) as IRegionFeatureCollection;
 
 const mapRegionNameToClassName = (
   name: IRegionFeature["properties"]["borough"]
