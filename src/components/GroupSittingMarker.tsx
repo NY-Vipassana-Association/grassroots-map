@@ -15,13 +15,40 @@ const icon = Leaflet.icon({
 });
 
 export default class GroupSittingMarker extends React.Component<IProps> {
+  markerRef: React.RefObject<Marker>;
+
+  constructor(props: IProps) {
+    super(props);
+    this.markerRef = React.createRef();
+  }
+
+  getLeafletElement = () => this.markerRef.current.leafletElement;
+
+  getDataTestIconId = () =>
+    `group-sitting-icon-${this.props.groupSitting.name
+      .toLowerCase()
+      .replace(" ", "-")}`;
+
+  getDataTestPopupId = () =>
+    `group-sitting-popup-${this.props.groupSitting.name
+      .toLowerCase()
+      .replace(" ", "-")}`;
+
+  componentDidMount() {
+    this.getLeafletElement()._icon.setAttribute(
+      "data-test",
+
+      this.getDataTestIconId()
+    );
+  }
+
   render() {
     const { groupSitting } = this.props;
 
     return (
-      <Marker icon={icon} position={groupSitting.position}>
+      <Marker ref={this.markerRef} icon={icon} position={groupSitting.position}>
         <Popup>
-          <div data-test={`group-sitting-popup-${groupSitting.name}`}>
+          <div data-test={this.getDataTestPopupId()}>
             <h3>Group Sitting</h3>Host: {groupSitting.name}
             <p>{groupSitting.address} (contact host for full address)</p>
             <p>{groupSitting.time}</p>
