@@ -40,14 +40,22 @@ const getFeatureColor = (feature: IRegionFeature) => {
   );
 };
 
+interface IProps {
+  setHoveredRegion: (regionName: null | IRegionGeoJSON) => void;
+  hoveredRegion: null | IRegionGeoJSON;
+}
+
 interface IState {
   selectedBoroughName: null | IOldStudentDataItem["name"];
 }
 
-export default class RegionGeoJSONLayer extends React.Component<{}, IState> {
+export default class RegionGeoJSONLayer extends React.Component<
+  IProps,
+  IState
+> {
   geojsonRef: React.RefObject<GeoJSON>;
 
-  constructor(props: {}) {
+  constructor(props: IProps) {
     super(props);
     this.state = {
       selectedBoroughName: null
@@ -79,13 +87,23 @@ export default class RegionGeoJSONLayer extends React.Component<{}, IState> {
     }
   };
 
-  handleMouseover = (e: Leaflet.LeafletEvent) => {
-    this.highlightFeature(e.target);
-    this.props.selectHoveredRegion();
+  componentDidUpdate = (prevProps: IProps) => {
+    const { hoveredRegion } = this.props;
+
+    if (hoveredRegion) {
+      this.highlightFeature(hoveredRegion);
+    } else {
+      this.getGeojsonLeafletElement().resetStyle(prevProps.hoveredRegion);
+    }
   };
 
-  handleMouseout = (e: Leaflet.LeafletEvent) => {
-    this.getGeojsonLeafletElement().resetStyle(e.target);
+  handleMouseover = (e: Leaflet.LeafletEvent) => {
+    this.highlightFeature(e.target);
+    this.props.setHoveredRegion(e.target);
+  };
+
+  handleMouseout = () => {
+    this.props.setHoveredRegion(null);
   };
 
   onEachFeature = (_feature: any, layer: any) => {

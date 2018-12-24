@@ -4,12 +4,27 @@ import { Map, TileLayer } from "react-leaflet";
 import { mapContainer } from "./App.css";
 import DhammaHouseMarker from "./DhammaHouseMarker";
 import RegionLayer from "./RegionLayer/index";
+import { IRegionGeoJSON } from "../types/index";
 
 const accessToken =
   "pk.eyJ1IjoibmF0YW5pYmFyIiwiYSI6ImNqa2FnMTM5ajM1ajYzbG50dXptMDhjcDIifQ.Dae3BHZd9sexPOk_d76O1g";
 
-export default class App extends React.Component {
+interface IState {
+  hoveredRegion: null | IRegionGeoJSON;
+}
+
+export default class App extends React.Component<{}, IState> {
+  state = {
+    hoveredRegion: null
+  };
+
+  setHoveredRegion = (hoveredRegion: IState["hoveredRegion"]) => {
+    this.setState({ hoveredRegion });
+  };
+
   render() {
+    const { hoveredRegion } = this.state;
+
     return (
       <Map
         className={mapContainer}
@@ -21,7 +36,10 @@ export default class App extends React.Component {
           maxZoom={18}
           url={`https://api.mapbox.com/styles/v1/natanibar/cjkbf9gr8019f2rqllw7uz3ep/tiles/{z}/{x}/{y}?access_token=${accessToken}`}
         />
-        <RegionLayer />
+        <RegionLayer
+          hoveredRegion={hoveredRegion}
+          setHoveredRegion={this.setHoveredRegion}
+        />
         <DhammaHouseMarker />
       </Map>
     );
