@@ -1,7 +1,9 @@
 [
   {
-    "lat": 41.5121,
-    "lon": -73.969,
+    "position": {
+      "lat": 41.5121,
+      "lng": -73.969
+    },
     "name": "Dan Doniger",
     "address": "Elm St, Beacon, NY",
     "time": "1st and 3rd Sundays, 9am – 10am",
@@ -9,16 +11,20 @@
     "email": "danbasho@gmail.com"
   },
   {
-    "lat": 40.5766,
-    "lon": -74.3915,
+    "position": {
+      "lat": 40.5766,
+      "lng": -74.3915
+    },
     "name": "Ravi",
     "address": "Oak Tree Avenue, South Plainfield, NJ",
     "time": "Saturday 7:30a – 8:30a",
     "phoneNumber": "(732) 589-9634"
   },
   {
-    "lat": 40.7113,
-    "lon": -74.1845,
+    "position": {
+      "lat": 40.7113,
+      "lng": -74.1845
+    },
     "name": "Keven Porter",
     "address": "Rose Terrace, Newark, NJ",
     "time": "Most Sundays, 9:00a – Noon. Please call to confirm.",

@@ -191,7 +191,7 @@ const addGroupSittingsTo = (map: Leaflet.Map) => {
     iconSize: [30, 30]
   });
   groupSittings.forEach(groupSitting => {
-    const marker = Leaflet.marker([groupSitting.lat, groupSitting.lon], {
+    const marker = Leaflet.marker(groupSitting.position, {
       icon: groupSittingIcon
     }) as Leaflet.Marker & { _icon: any };
     const groupSittingName = groupSitting.name.toLowerCase().replace(" ", "-");

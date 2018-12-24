@@ -14,8 +14,10 @@ export interface IOldStudentDataItem {
 }
 
 export interface IGroupSitting {
-  lat: number;
-  lon: number;
+  position: {
+    lat: number;
+    lng: number;
+  };
   name: string;
   address: string;
   time: string;

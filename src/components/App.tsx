@@ -5,7 +5,11 @@ import { appContainer, mapContainer } from "./App.css";
 import DhammaHouseMarker from "./DhammaHouseMarker";
 import HoveredRegionInfoBox from "./HoveredRegionInfoBox";
 import RegionLayer from "./RegionLayer/index";
-import { IRegionGeoJSON } from "../types/index";
+import GroupSittingMarker from "./GroupSittingMarker";
+
+import { IRegionGeoJSON, IGroupSitting } from "../types/index";
+import groupSittingsJSON from "../groupSittings.json";
+const groupSittings: IGroupSitting[] = groupSittingsJSON;
 
 const accessToken =
   "pk.eyJ1IjoibmF0YW5pYmFyIiwiYSI6ImNqa2FnMTM5ajM1ajYzbG50dXptMDhjcDIifQ.Dae3BHZd9sexPOk_d76O1g";
@@ -42,6 +46,9 @@ export default class App extends React.Component<{}, IState> {
             hoveredRegion={hoveredRegion}
             setHoveredRegion={this.setHoveredRegion}
           />
+          {groupSittings.map((groupSitting, index) => (
+            <GroupSittingMarker key={index} groupSitting={groupSitting} />
+          ))}
           <DhammaHouseMarker />
         </Map>
         <HoveredRegionInfoBox hoveredRegion={hoveredRegion} />
