@@ -3,11 +3,14 @@ import React from "react";
 import { IRegionGeoJSON } from "../types/index";
 import { getBoroughDataByName } from "../helpers";
 
-// @ts-ignore todo
 import {
+  // @ts-ignore todo
   container,
+  // @ts-ignore todo
   heading,
+  // @ts-ignore todo
   regionNameP,
+  // @ts-ignore todo
   regionCountP
 } from "./HoveredRegionInfoBox.css";
 
