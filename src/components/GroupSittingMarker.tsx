@@ -22,7 +22,10 @@ export default class GroupSittingMarker extends React.Component<IProps> {
     this.markerRef = React.createRef();
   }
 
-  getLeafletElement = () => this.markerRef.current.leafletElement;
+  getLeafletElement = () =>
+    this.markerRef.current!.leafletElement as Leaflet.Marker<any> & {
+      _icon: any;
+    };
 
   getDataTestIconId = () =>
     `group-sitting-icon-${this.props.groupSitting.name
