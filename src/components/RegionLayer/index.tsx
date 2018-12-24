@@ -90,10 +90,10 @@ export default class RegionGeoJSONLayer extends React.Component<
   componentDidUpdate = (prevProps: IProps) => {
     const { hoveredRegion } = this.props;
 
-    if (hoveredRegion) {
-      this.highlightFeature(hoveredRegion);
-    } else {
-      this.getGeojsonLeafletElement().resetStyle(prevProps.hoveredRegion);
+    if (prevProps.hoveredRegion !== hoveredRegion) {
+      if (hoveredRegion) this.highlightFeature(hoveredRegion);
+      if (prevProps.hoveredRegion)
+        this.getGeojsonLeafletElement().resetStyle(prevProps.hoveredRegion);
     }
   };
 
