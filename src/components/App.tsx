@@ -1,8 +1,9 @@
 import React from "react";
 import { Map, TileLayer } from "react-leaflet";
 // @ts-ignore todo
-import { mapContainer } from "./App.css";
+import { appContainer, mapContainer } from "./App.css";
 import DhammaHouseMarker from "./DhammaHouseMarker";
+import HoveredRegionInfoBox from "./HoveredRegionInfoBox";
 import RegionLayer from "./RegionLayer/index";
 import { IRegionGeoJSON } from "../types/index";
 
@@ -26,22 +27,25 @@ export default class App extends React.Component<{}, IState> {
     const { hoveredRegion } = this.state;
 
     return (
-      <Map
-        className={mapContainer}
-        center={DhammaHouseMarker.coordinates}
-        zoom={11}
-      >
-        <TileLayer
-          attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
-          maxZoom={18}
-          url={`https://api.mapbox.com/styles/v1/natanibar/cjkbf9gr8019f2rqllw7uz3ep/tiles/{z}/{x}/{y}?access_token=${accessToken}`}
-        />
-        <RegionLayer
-          hoveredRegion={hoveredRegion}
-          setHoveredRegion={this.setHoveredRegion}
-        />
-        <DhammaHouseMarker />
-      </Map>
+      <div className={appContainer}>
+        <Map
+          className={mapContainer}
+          center={DhammaHouseMarker.coordinates}
+          zoom={11}
+        >
+          <TileLayer
+            attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
+            maxZoom={18}
+            url={`https://api.mapbox.com/styles/v1/natanibar/cjkbf9gr8019f2rqllw7uz3ep/tiles/{z}/{x}/{y}?access_token=${accessToken}`}
+          />
+          <RegionLayer
+            hoveredRegion={hoveredRegion}
+            setHoveredRegion={this.setHoveredRegion}
+          />
+          <DhammaHouseMarker />
+        </Map>
+        <HoveredRegionInfoBox hoveredRegion={hoveredRegion} />
+      </div>
     );
   }
 }

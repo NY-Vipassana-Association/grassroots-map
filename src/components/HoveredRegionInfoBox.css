@@ -1,0 +1,27 @@
+.container {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  border-radius: 5px;
+  z-index: 800;
+}
+
+.heading {
+  color: #777;
+  font-size: 14px;
+  margin: 0 0 5px;
+}
+
+.regionNameP {
+  margin: 0;
+  font-weight: bold;
+}
+.regionCountP {
+  margin: 0;
+}
