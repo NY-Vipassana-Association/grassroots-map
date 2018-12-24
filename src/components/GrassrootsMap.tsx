@@ -12,7 +12,7 @@ export default class GrassrootsMap extends React.Component {
       <Map
         className={mapContainer}
         center={DhammaHouseMarker.coordinates}
-        zoom={13}
+        zoom={11}
       >
         <TileLayer
           attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
