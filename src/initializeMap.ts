@@ -191,19 +191,29 @@ const addGroupSittingsTo = (map: Leaflet.Map) => {
     iconSize: [30, 30]
   });
   groupSittings.forEach(groupSitting => {
-    Leaflet.marker([groupSitting.lat, groupSitting.lon], {
+    const marker = Leaflet.marker([groupSitting.lat, groupSitting.lon], {
       icon: groupSittingIcon
-    })
+    });
+    const groupSittingName = groupSitting.name.toLowerCase().replace(" ", "-");
+
+    marker
       .addTo(map)
       .bindPopup(
-        `<h3>Group Sitting</h3>Host: ${groupSitting.name}<br /><br />${
+        `<div data-test=group-sitting-popup-${groupSittingName}><h3>Group Sitting</h3>Host: ${
+          groupSitting.name
+        }<br /><br />${
           groupSitting.address
         } (contact host for full address)<br /><br />${
           groupSitting.time
         }<br />${
           groupSitting.email ? `<br />${groupSitting.email}` : ""
-        }<br />${groupSitting.phoneNumber}`
+        }<br />${groupSitting.phoneNumber}</div>`
       );
+
+    marker._icon.setAttribute(
+      "data-test",
+      `group-sitting-icon-${groupSittingName}`
+    );
   });
 };
 
