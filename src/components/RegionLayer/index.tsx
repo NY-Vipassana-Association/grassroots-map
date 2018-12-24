@@ -2,8 +2,14 @@ import React from "react";
 import { GeoJSON } from "react-leaflet";
 
 import nycBoroughsJSON from "../../nycBoroughs.json";
-import { IRegionFeatureCollection, IOldStudentDataItem } from "../../types";
+import {
+  IRegionFeatureCollection,
+  IOldStudentDataItem,
+  IRegionGeoJSON,
+  IRegionFeature
+} from "../../types";
 import RegionLayerPopup from "./RegionLayerPopup";
+import { LeafletEvent } from "leaflet";
 
 const nycBoroughsData = nycBoroughsJSON as IRegionFeatureCollection;
 
@@ -34,11 +40,11 @@ export default class RegionGeoJSONLayer extends React.Component<{}, IState> {
     this.geojsonRef = React.createRef();
   }
 
-  onClick = event => {
+  onClick = (event: LeafletEvent) => {
     this.setState({ selectedBoroughName: mapRegionLayerToName(event.target) });
   };
 
-  onEachFeature = (_feature, layer) => {
+  onEachFeature = (_feature: any, layer: any) => {
     layer.on({
       click: this.onClick
     });
@@ -47,10 +53,11 @@ export default class RegionGeoJSONLayer extends React.Component<{}, IState> {
   setDataTestAttributeOnFeatures() {
     const geojsonRefElement = this.geojsonRef.current;
     if (!geojsonRefElement) return;
+    const leafletElement = geojsonRefElement.leafletElement as any;
 
-    const layers = Object.values(geojsonRefElement.leafletElement._layers);
+    const layers = Object.values(leafletElement._layers) as any;
 
-    layers.forEach(layer => {
+    layers.forEach((layer: any) => {
       layer._path.setAttribute(
         "data-test",
         mapRegionNameToClassName(mapRegionLayerToName(layer))
