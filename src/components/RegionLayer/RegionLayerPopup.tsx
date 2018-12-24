@@ -3,13 +3,14 @@ import { Popup } from "react-leaflet";
 
 import oldStudentDataJson from "../../oldStudentData.json";
 import { IOldStudentDataItem } from "../../types";
+import RegionalContactInfo from "./RegionalContactInfo";
 
 const oldStudentData: IOldStudentDataItem[] = oldStudentDataJson;
 
 const getBoroughDataByName = (name: IOldStudentDataItem["name"]) => {
   const boroughDataItem = oldStudentData.find(borough => borough.name === name);
   if (!boroughDataItem)
-    console.error("Could not find old student data for borough");
+    console.warn("Could not find old student data for borough");
 
   return boroughDataItem;
 };
@@ -33,22 +34,30 @@ export default class RegionLayerPopup extends React.Component<IProps> {
     const { boroughName } = this.props;
     const boroughData = getBoroughDataByName(boroughName);
 
+    if (!boroughData) return null;
+
+    const { regionalContact } = boroughData;
+
     return (
       <Popup>
-        {boroughData ? (
+        <p>
+          There are{" "}
+          <span>
+            {boroughData
+              ? boroughData.oldStudentCount
+              : populationCounts.level1}
+          </span>{" "}
+          old students in {boroughName}.
+        </p>
+        {regionalContact ? (
+          <RegionalContactInfo regionalContact={regionalContact} />
+        ) : (
           <p>
-            There are{" "}
-            <span>
-              {boroughData
-                ? boroughData.oldStudentCount
-                : populationCounts.level1}
-            </span>{" "}
-            old students in {boroughName}.
+            If you are interested in joining your local community planning team,
+            please reach out to our Dhamma Service Committee at
+            dhammaservice.nyva@gmail.com or (413) 438-7821.
           </p>
-        ) : null}
-        {/* {renderRegionalContactInfo(
-              boroughData && boroughData.regionalContact
-            )} */}
+        )}
         <p>
           <a
             href="https://docs.google.com/document/d/1Q3S9qwr1akRhVcNKRcnCA7wWCQiMayVLTcoVwzCGBo4/edit"

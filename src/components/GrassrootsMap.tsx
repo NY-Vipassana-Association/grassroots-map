@@ -2,7 +2,7 @@ import React from "react";
 import { Map, TileLayer } from "react-leaflet";
 import { mapContainer } from "./GrassrootsMap.css";
 import DhammaHouseMarker from "./DhammaHouseMarker";
-import RegionLayer from "./RegionLayer";
+import RegionLayer from "./RegionLayer/index";
 
 const accessToken =
   "pk.eyJ1IjoibmF0YW5pYmFyIiwiYSI6ImNqa2FnMTM5ajM1ajYzbG50dXptMDhjcDIifQ.Dae3BHZd9sexPOk_d76O1g";
