@@ -81,13 +81,19 @@ export default class RegionGeoJSONLayer extends React.Component<{}, IState> {
     }
   };
 
+  handleMouseover = (e: Leaflet.LeafletEvent) => {
+    this.highlightFeature(e);
+  };
+
+  handleMouseout = (e: Leaflet.LeafletEvent) => {
+    this.getGeojsonLeafletElement().resetStyle(e.target);
+  };
+
   onEachFeature = (_feature: any, layer: any) => {
     layer.on({
       click: this.onClick,
-      mouseover: this.highlightFeature,
-      mouseout: (e: Leaflet.LeafletEvent) => {
-        this.getGeojsonLeafletElement().resetStyle(e.target);
-      }
+      mouseover: this.handleMouseover,
+      mouseout: this.handleMouseout
     });
   };
 
