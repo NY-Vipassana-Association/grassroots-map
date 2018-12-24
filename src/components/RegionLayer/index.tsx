@@ -7,6 +7,14 @@ import RegionLayerPopup from "./RegionLayerPopup";
 
 const nycBoroughsData = nycBoroughsJSON as IRegionFeatureCollection;
 
+const mapRegionNameToClassName = (
+  name: IRegionFeature["properties"]["borough"]
+) =>
+  `region-${name
+    .toLowerCase()
+    .split(" ")
+    .join("-")}`;
+
 const mapRegionLayerToName = (layer: IRegionGeoJSON) =>
   layer.feature.properties.borough;
 
@@ -15,11 +23,15 @@ interface IState {
 }
 
 export default class RegionGeoJSONLayer extends React.Component<{}, IState> {
+  geojsonRef: React.RefObject<GeoJSON>;
+
   constructor(props: {}) {
     super(props);
     this.state = {
       selectedBoroughName: null
     };
+
+    this.geojsonRef = React.createRef();
   }
 
   onClick = event => {
@@ -32,11 +44,33 @@ export default class RegionGeoJSONLayer extends React.Component<{}, IState> {
     });
   };
 
+  setDataTestAttributeOnFeatures() {
+    const geojsonRefElement = this.geojsonRef.current;
+    if (!geojsonRefElement) return;
+
+    const layers = Object.values(geojsonRefElement.leafletElement._layers);
+
+    layers.forEach(layer => {
+      layer._path.setAttribute(
+        "data-test",
+        mapRegionNameToClassName(mapRegionLayerToName(layer))
+      );
+    });
+  }
+
+  componentDidMount() {
+    this.setDataTestAttributeOnFeatures();
+  }
+
   render() {
     const { selectedBoroughName } = this.state;
 
     return (
-      <GeoJSON data={nycBoroughsData} onEachFeature={this.onEachFeature}>
+      <GeoJSON
+        ref={this.geojsonRef}
+        data={nycBoroughsData}
+        onEachFeature={this.onEachFeature}
+      >
         {selectedBoroughName ? (
           <RegionLayerPopup boroughName={selectedBoroughName} />
         ) : null}
