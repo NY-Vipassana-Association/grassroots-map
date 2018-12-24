@@ -1,7 +1,8 @@
 import React from "react";
+import GrassrootsMap from "./GrassrootsMap";
 
 export default class App extends React.Component {
   render() {
-    return <p>fdafdappppafjdpisoafj</p>;
+    return <GrassrootsMap />;
   }
 }
