@@ -60,9 +60,7 @@ export default class RegionGeoJSONLayer extends React.Component<{}, IState> {
     this.setState({ selectedBoroughName: mapRegionLayerToName(event.target) });
   };
 
-  highlightFeature = (e: Leaflet.LeafletEvent) => {
-    var layer: IRegionGeoJSON = e.target;
-
+  highlightFeature = (layer: IRegionGeoJSON) => {
     layer.setStyle({
       weight: 5,
       color: "#666",
@@ -82,7 +80,8 @@ export default class RegionGeoJSONLayer extends React.Component<{}, IState> {
   };
 
   handleMouseover = (e: Leaflet.LeafletEvent) => {
-    this.highlightFeature(e);
+    this.highlightFeature(e.target);
+    this.props.selectHoveredRegion();
   };
 
   handleMouseout = (e: Leaflet.LeafletEvent) => {
