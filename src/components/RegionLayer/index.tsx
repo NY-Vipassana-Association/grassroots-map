@@ -21,7 +21,7 @@ import {
 
 const nycBoroughsData = (nycBoroughsJSON as unknown) as IRegionFeatureCollection;
 
-const mapRegionNameToClassName = (
+const mapRegionNameToDataTestName = (
   name: IRegionFeature["properties"]["borough"]
 ) =>
   `region-${name
@@ -105,7 +105,7 @@ export default class RegionGeoJSONLayer extends React.Component<{}, IState> {
     layers.forEach((layer: any) => {
       layer._path.setAttribute(
         "data-test",
-        mapRegionNameToClassName(mapRegionLayerToName(layer))
+        mapRegionNameToDataTestName(mapRegionLayerToName(layer))
       );
     });
   }
