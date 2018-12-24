@@ -2,6 +2,7 @@ import Leaflet from "leaflet";
 
 import oldStudentDataJson from "./oldStudentData.json";
 import groupSittingsJSON from "./groupSittings.json";
+import nycBoroughsJSON from "./nycBoroughs.json";
 
 import cssClasses from "./css/main.css";
 import dhammaHouseIconUrl from "./dhammaHouseIcon.svg";
@@ -21,6 +22,9 @@ import {
 type InfoBox = any;
 
 const oldStudentData: IOldStudentDataItem[] = oldStudentDataJson;
+// use type assertion here because if we use nycBoroughsData : IRegionFeatureCollection,
+// then we get the error that type: "FeatureCollection" is not assignable to type: string
+const nycBoroughsData = nycBoroughsJSON as IRegionFeatureCollection;
 const groupSittings: IGroupSitting[] = groupSittingsJSON;
 const dhammaHouseCoordinates = { lat: 40.7544, lng: -73.9905 };
 
@@ -93,17 +97,6 @@ const mapRegionNameToClassName = (
 const addNycBoroughsTo = async (map: Leaflet.Map, info: InfoBox) => {
   // todo add type
   let geojsonBoroughsLayer: any;
-  let nycBoroughsResponse;
-  try {
-    nycBoroughsResponse = await fetch(
-      "http://data.beta.nyc//dataset/68c0332f-c3bb-4a78-a0c1-32af515892d6/resource/7c164faa-4458-4ff2-9ef0-09db00b509ef/download/42c737fd496f4d6683bba25fb0e86e1dnycboroughboundaries.geojson"
-    );
-  } catch (e) {
-    console.error("error loading nyc boroughs");
-    return;
-  }
-
-  const nycBoroughsGeojson: IRegionFeatureCollection = await nycBoroughsResponse.json();
 
   const highlightFeature = (e: Leaflet.LeafletEvent) => {
     var layer: IRegionGeoJSON = e.target;
@@ -176,7 +169,7 @@ const addNycBoroughsTo = async (map: Leaflet.Map, info: InfoBox) => {
     `;
   };
 
-  geojsonBoroughsLayer = Leaflet.geoJSON(nycBoroughsGeojson, {
+  geojsonBoroughsLayer = Leaflet.geoJSON(nycBoroughsData, {
     style: nycBoroughsStyle,
     onEachFeature
   })
