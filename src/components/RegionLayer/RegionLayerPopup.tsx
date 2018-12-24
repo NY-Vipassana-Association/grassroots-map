@@ -1,29 +1,9 @@
 import React from "react";
 import { Popup } from "react-leaflet";
 
-import oldStudentDataJson from "../../oldStudentData.json";
 import { IOldStudentDataItem } from "../../types";
 import RegionalContactInfo from "./RegionalContactInfo";
-
-const oldStudentData: IOldStudentDataItem[] = oldStudentDataJson;
-
-const getBoroughDataByName = (name: IOldStudentDataItem["name"]) => {
-  const boroughDataItem = oldStudentData.find(borough => borough.name === name);
-  if (!boroughDataItem)
-    console.warn("Could not find old student data for borough");
-
-  return boroughDataItem;
-};
-
-enum populationCounts {
-  level1 = 0,
-  level2 = 200,
-  level3 = 500,
-  level4 = 1000,
-  level5 = 1500,
-  level6 = 2000,
-  level7 = 2500
-}
+import { getBoroughDataByName, populationCounts } from "../../helpers";
 
 interface IProps {
   boroughName: IOldStudentDataItem["name"];

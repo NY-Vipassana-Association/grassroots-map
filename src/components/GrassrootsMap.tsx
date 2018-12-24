@@ -1,5 +1,6 @@
 import React from "react";
 import { Map, TileLayer } from "react-leaflet";
+// @ts-ignore todo
 import { mapContainer } from "./GrassrootsMap.css";
 import DhammaHouseMarker from "./DhammaHouseMarker";
 import RegionLayer from "./RegionLayer/index";
