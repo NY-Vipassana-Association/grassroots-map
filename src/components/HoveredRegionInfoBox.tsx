@@ -23,7 +23,7 @@ export default class HoveredRegionInfoBox extends React.Component<IProps> {
     const { hoveredRegion } = this.props;
 
     return (
-      <div className={container}>
+      <div className={container} data-test="hover-info-box">
         <h1 className={heading}>Vipassana Grassroots Map</h1>
         {(() => {
           if (!hoveredRegion) return "Hover over a region";
