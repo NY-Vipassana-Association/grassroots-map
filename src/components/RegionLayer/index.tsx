@@ -1,9 +1,9 @@
 import React from "react";
 import { GeoJSON, Popup } from "react-leaflet";
 
-import oldStudentDataJson from "../oldStudentData.json";
-import nycBoroughsJSON from "../nycBoroughs.json";
-import { IRegionFeatureCollection, IOldStudentDataItem } from "../types";
+import oldStudentDataJson from "../../oldStudentData.json";
+import nycBoroughsJSON from "../../nycBoroughs.json";
+import { IRegionFeatureCollection, IOldStudentDataItem } from "../../types";
 
 const oldStudentData: IOldStudentDataItem[] = oldStudentDataJson;
 const nycBoroughsData = nycBoroughsJSON as IRegionFeatureCollection;
