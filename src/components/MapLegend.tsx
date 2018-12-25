@@ -17,7 +17,7 @@ class MapLegend extends React.Component {
 
     // loop through our density intervals and generate a label with a colored square for each interval
     return (
-      <div className={`${box} ${legend}`}>
+      <div data-test="legend-box" className={`${box} ${legend}`}>
         {colorKeys.map((colorKey, index) => {
           const nextColorKey = colorKeys[index + 1];
           return (
