@@ -1,14 +1,14 @@
 import React from "react";
 import { Map, TileLayer } from "react-leaflet";
 // @ts-ignore todo
-import { appContainer, mapContainer } from "./App.css";
+import { appContainer, mapContainer } from "./App.module.css";
 import DhammaHouseMarker from "./DhammaHouseMarker";
 import HoveredRegionInfoBox from "./HoveredRegionInfoBox";
 import RegionLayer from "./RegionLayer/index";
 import GroupSittingMarker from "./GroupSittingMarker";
 import MapLegend from "./MapLegend";
 
-import { IRegionGeoJSON, IGroupSitting } from "../types/index";
+import { IRegionGeoJSON, IGroupSitting } from "../types";
 import groupSittingsJSON from "../groupSittings.json";
 const groupSittings: IGroupSitting[] = groupSittingsJSON;
 

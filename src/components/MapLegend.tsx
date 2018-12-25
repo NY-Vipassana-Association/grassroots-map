@@ -5,7 +5,7 @@ import {
   box,
   // @ts-ignore todo
   legend
-} from "./Box.css";
+} from "./Box.module.css";
 
 import { getColor, populationColors } from "../helpers";
 
@@ -21,7 +21,7 @@ class MapLegend extends React.Component {
         {colorKeys.map((colorKey, index) => {
           const nextColorKey = colorKeys[index + 1];
           return (
-            <div>
+            <div key={index}>
               <i style={{ background: getColor(colorKey) }} />
               <span>{colorKey}</span>
               <span>{nextColorKey ? `–${nextColorKey}` : "+"}</span>

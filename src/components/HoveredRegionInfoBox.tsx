@@ -1,6 +1,6 @@
 import React from "react";
 
-import { IRegionGeoJSON } from "../types/index";
+import { IRegionGeoJSON } from "../types";
 import { getBoroughDataByName } from "../helpers";
 
 import {
@@ -14,7 +14,7 @@ import {
   regionNameP,
   // @ts-ignore todo
   regionCountP
-} from "./Box.css";
+} from "./Box.module.css";
 
 interface IProps {
   hoveredRegion: null | IRegionGeoJSON;

@@ -2,7 +2,7 @@ import React from "react";
 import Leaflet from "leaflet";
 import { Marker, Popup } from "react-leaflet";
 
-import { IGroupSitting } from "../types/index";
+import { IGroupSitting } from "../types";
 import groupSittingIconUrl from "../groupSittingIcon.svg";
 
 interface IProps {

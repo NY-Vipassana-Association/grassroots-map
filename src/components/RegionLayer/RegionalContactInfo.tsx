@@ -1,5 +1,5 @@
 import React from "react";
-import { IRegionalContact } from "../../types/index";
+import { IRegionalContact } from "../../types";
 
 interface IProps {
   regionalContact: IRegionalContact;
