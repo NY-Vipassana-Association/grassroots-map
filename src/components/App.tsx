@@ -4,7 +4,7 @@ import { Map, TileLayer } from "react-leaflet";
 import { appContainer, mapContainer } from "./App.module.css";
 import DhammaHouseMarker from "./DhammaHouseMarker";
 import HoveredRegionInfoBox from "./HoveredRegionInfoBox";
-import RegionLayer from "./RegionLayer/index";
+import RegionLayer from "./RegionLayer";
 import GroupSittingMarker from "./GroupSittingMarker";
 import MapLegend from "./MapLegend";
 
