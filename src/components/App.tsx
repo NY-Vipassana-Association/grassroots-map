@@ -1,15 +1,16 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Map, TileLayer } from "react-leaflet";
 // @ts-ignore todo
 import { appContainer, mapContainer } from "./App.module.css";
 import DhammaHouseMarker from "./DhammaHouseMarker";
 import HoveredRegionInfoBox from "./HoveredRegionInfoBox";
-import RegionLayer from "./RegionLayer";
 import GroupSittingMarker from "./GroupSittingMarker";
 import MapLegend from "./MapLegend";
 
 import { IRegionGeoJSON, IGroupSitting } from "../types";
 import groupSittingsJSON from "../groupSittings.json";
+
+const RegionLayer = React.lazy(() => import("./RegionLayer"));
 const groupSittings: IGroupSitting[] = groupSittingsJSON;
 
 const accessToken =
@@ -43,10 +44,12 @@ export default class App extends React.Component<{}, IState> {
             maxZoom={18}
             url={`https://api.mapbox.com/styles/v1/natanibar/cjkbf9gr8019f2rqllw7uz3ep/tiles/{z}/{x}/{y}?access_token=${accessToken}`}
           />
-          <RegionLayer
-            hoveredRegion={hoveredRegion}
-            setHoveredRegion={this.setHoveredRegion}
-          />
+          <Suspense fallback={null}>
+            <RegionLayer
+              hoveredRegion={hoveredRegion}
+              setHoveredRegion={this.setHoveredRegion}
+            />
+          </Suspense>
           {groupSittings.map((groupSitting, index) => (
             <GroupSittingMarker key={index} groupSitting={groupSitting} />
           ))}
