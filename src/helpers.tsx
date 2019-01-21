@@ -5,11 +5,11 @@ const oldStudentData: IOldStudentDataItem[] = oldStudentDataJson;
 
 export enum populationCounts {
   level1 = 0,
-  level2 = 200,
-  level3 = 500,
-  level4 = 1000,
-  level5 = 1500,
-  level6 = 2000,
+  level2 = 50,
+  level3 = 100,
+  level4 = 200,
+  level5 = 400,
+  level6 = 1500,
   level7 = 2500
 }
 
