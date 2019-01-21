@@ -11,6 +11,8 @@ const nycBoroughsJSON = require("./nycBoroughs.json");
 // https://og-production-open-data-newarknj-892364687672.s3.amazonaws.com/resources/95db8cad-3a8c-41a4-b8b1-4991990f07f3/njcountypolygonv2.geojson?Signature=90k42s%2Ftzgo5qhYQ1U%2BaLhacxAU%3D&Expires=1548103718&AWSAccessKeyId=AKIAJJIENTAPKHZMIPXQ
 const newJerseyCounties = require("./newJerseyCounties.json");
 
+const regionStudentData = require("../../data/oldStudentData.json");
+
 const njNorthernCountiesGeojsonData = newJerseyCounties;
 
 const nycBoroughs = nycBoroughsJSON;
@@ -24,7 +26,9 @@ const nycRegions = nycBoroughs.features.map(boroughFeature => {
   };
 });
 
-const newJerseyCountiesToInclude = ["Bergen", "Essex"];
+const newJerseyCountiesToInclude = regionStudentData
+  .filter(regionStudentItem => regionStudentItem.state_name === "NJ")
+  .map(regionStudentItem => regionStudentItem.region_name);
 
 const newJerseyRegions = njNorthernCountiesGeojsonData.features
   .filter(newJerseyCountyFeature =>
