@@ -38,6 +38,7 @@ export type IBoroughFeature = geojson.Feature<
   geojson.GeometryObject,
   BoroughProperties
 >;
+
 export type IBoroughFeatureCollection = geojson.FeatureCollection<
   geojson.GeometryObject,
   BoroughProperties
@@ -56,6 +57,7 @@ export type IRegionFeature = geojson.Feature<
   geojson.GeometryObject,
   RegionProperties
 >;
+
 export type IRegionFeatureCollection = geojson.FeatureCollection<
   geojson.GeometryObject,
   RegionProperties
