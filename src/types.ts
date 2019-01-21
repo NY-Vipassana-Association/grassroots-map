@@ -25,18 +25,40 @@ export interface IGroupSitting {
   email?: string;
 }
 
-export interface Borough {
+export interface BoroughProperties {
   borough: string;
   boroughCode: number;
 }
 
-export interface IBoroughGeoJSON extends Leaflet.GeoJSON<Borough> {
-  feature: geojson.Feature<geojson.MultiPoint, Borough>;
+export interface RegionProperties {
+  name: string;
+  code: number;
+}
+
+export interface IBoroughGeoJSON extends Leaflet.GeoJSON<BoroughProperties> {
+  feature: geojson.Feature<geojson.MultiPoint, BoroughProperties>;
   _path: SVGPathElement;
 }
 
-export type IBoroughFeature = geojson.Feature<geojson.GeometryObject, Borough>;
+export type IBoroughFeature = geojson.Feature<
+  geojson.GeometryObject,
+  BoroughProperties
+>;
 export type IBoroughFeatureCollection = geojson.FeatureCollection<
   geojson.GeometryObject,
-  Borough
+  BoroughProperties
+>;
+
+export interface IRegionGeoJSON extends Leaflet.GeoJSON<RegionProperties> {
+  feature: geojson.Feature<geojson.MultiPoint, RegionProperties>;
+  _path: SVGPathElement;
+}
+
+export type IRegionFeature = geojson.Feature<
+  geojson.GeometryObject,
+  RegionProperties
+>;
+export type IRegionFeatureCollection = geojson.FeatureCollection<
+  geojson.GeometryObject,
+  RegionProperties
 >;

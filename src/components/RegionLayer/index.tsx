@@ -6,8 +6,8 @@ import nycBoroughsData from "../../data/regions";
 
 import {
   IOldStudentDataItem,
-  IBoroughGeoJSON,
-  IBoroughFeature
+  IRegionGeoJSON,
+  IRegionFeature
 } from "../../types";
 
 import RegionLayerPopup from "./RegionLayerPopup";
@@ -19,18 +19,18 @@ import {
 } from "../../helpers";
 
 const mapRegionNameToDataTestName = (
-  name: IBoroughFeature["properties"]["borough"]
+  name: IRegionFeature["properties"]["name"]
 ) =>
   `region-${name
     .toLowerCase()
     .split(" ")
     .join("-")}`;
 
-const mapRegionLayerToName = (layer: IBoroughGeoJSON) =>
-  layer.feature.properties.borough;
+const mapRegionLayerToName = (layer: IRegionGeoJSON) =>
+  layer.feature.properties.name;
 
-const getFeatureColor = (feature: IBoroughFeature) => {
-  const boroughData = getBoroughDataByName(feature.properties.borough);
+const getFeatureColor = (feature: IRegionFeature) => {
+  const boroughData = getBoroughDataByName(feature.properties.name);
 
   return getColor(
     boroughData ? boroughData.oldStudentCount : populationCounts.level1
@@ -38,8 +38,8 @@ const getFeatureColor = (feature: IBoroughFeature) => {
 };
 
 interface IProps {
-  setHoveredRegion: (regionName: null | IBoroughGeoJSON) => void;
-  hoveredRegion: null | IBoroughGeoJSON;
+  setHoveredRegion: (regionName: null | IRegionGeoJSON) => void;
+  hoveredRegion: null | IRegionGeoJSON;
 }
 
 interface IState {
@@ -65,7 +65,7 @@ export default class RegionGeoJSONLayer extends React.Component<
     this.setState({ selectedBoroughName: mapRegionLayerToName(event.target) });
   };
 
-  highlightFeature = (layer: IBoroughGeoJSON) => {
+  highlightFeature = (layer: IRegionGeoJSON) => {
     layer.setStyle({
       weight: 5,
       color: "#666",
@@ -142,7 +142,7 @@ export default class RegionGeoJSONLayer extends React.Component<
         ref={this.geojsonRef}
         data={nycBoroughsData}
         onEachFeature={this.onEachFeature}
-        style={(feature?: IBoroughFeature) => ({
+        style={(feature?: IRegionFeature) => ({
           // fillColor: populationCounts.level1.toString(),
           fillColor: feature
             ? getFeatureColor(feature)
