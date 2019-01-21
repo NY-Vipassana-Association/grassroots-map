@@ -35,7 +35,7 @@ export interface IBoroughGeoJSON extends Leaflet.GeoJSON<Borough> {
   _path: SVGPathElement;
 }
 
-export type IRegionFeature = geojson.Feature<geojson.GeometryObject, Borough>;
+export type IBoroughFeature = geojson.Feature<geojson.GeometryObject, Borough>;
 export type IRegionFeatureCollection = geojson.FeatureCollection<
   geojson.GeometryObject,
   Borough

@@ -7,7 +7,7 @@ import nycBoroughsData from "../../data/regions";
 import {
   IOldStudentDataItem,
   IBoroughGeoJSON,
-  IRegionFeature
+  IBoroughFeature
 } from "../../types";
 
 import RegionLayerPopup from "./RegionLayerPopup";
@@ -19,7 +19,7 @@ import {
 } from "../../helpers";
 
 const mapRegionNameToDataTestName = (
-  name: IRegionFeature["properties"]["borough"]
+  name: IBoroughFeature["properties"]["borough"]
 ) =>
   `region-${name
     .toLowerCase()
@@ -29,7 +29,7 @@ const mapRegionNameToDataTestName = (
 const mapRegionLayerToName = (layer: IBoroughGeoJSON) =>
   layer.feature.properties.borough;
 
-const getFeatureColor = (feature: IRegionFeature) => {
+const getFeatureColor = (feature: IBoroughFeature) => {
   const boroughData = getBoroughDataByName(feature.properties.borough);
 
   return getColor(
@@ -142,7 +142,7 @@ export default class RegionGeoJSONLayer extends React.Component<
         ref={this.geojsonRef}
         data={nycBoroughsData}
         onEachFeature={this.onEachFeature}
-        style={(feature?: IRegionFeature) => ({
+        style={(feature?: IBoroughFeature) => ({
           // fillColor: populationCounts.level1.toString(),
           fillColor: feature
             ? getFeatureColor(feature)
