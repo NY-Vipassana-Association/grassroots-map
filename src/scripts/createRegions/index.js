@@ -24,7 +24,7 @@ const nycRegions = nycBoroughs.features.map(boroughFeature => {
   };
 });
 
-const newJerseyCountiesToInclude = ["Essex"];
+const newJerseyCountiesToInclude = ["Bergen", "Essex"];
 
 const newJerseyRegions = njNorthernCountiesGeojsonData.features
   .filter(newJerseyCountyFeature =>

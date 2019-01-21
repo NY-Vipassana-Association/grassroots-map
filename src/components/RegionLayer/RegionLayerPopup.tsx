@@ -5,8 +5,9 @@ import { IOldStudentDataItem } from "../../types";
 import RegionalContactInfo from "./RegionalContactInfo";
 import { getRegionDataByName, populationCounts } from "../../helpers";
 
+// todo: rename from borough to region
 interface IProps {
-  boroughName: IOldStudentDataItem["name"];
+  boroughName: IOldStudentDataItem["region_name"];
 }
 
 export default class RegionLayerPopup extends React.Component<IProps> {
@@ -24,7 +25,7 @@ export default class RegionLayerPopup extends React.Component<IProps> {
           There are{" "}
           <span>
             {boroughData
-              ? boroughData.oldStudentCount
+              ? boroughData.student_count_all_time
               : populationCounts.level1}
           </span>{" "}
           old students in {boroughName}.

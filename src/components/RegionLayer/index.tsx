@@ -2,8 +2,8 @@ import React from "react";
 import { GeoJSON } from "react-leaflet";
 import Leaflet, { LeafletEvent } from "leaflet";
 
-import regionData from "../../data/regions.json";
-const regionsData = regionData as IRegionFeatureCollection;
+import _regionsGeojson from "../../data/regions.json";
+const regionsGeojson = _regionsGeojson as IRegionFeatureCollection;
 
 import {
   IOldStudentDataItem,
@@ -31,7 +31,7 @@ const getFeatureColor = (feature: IRegionFeature) => {
   const boroughData = getRegionDataByName(feature.properties.name);
 
   return getColor(
-    boroughData ? boroughData.oldStudentCount : populationCounts.level1
+    boroughData ? boroughData.student_count_all_time : populationCounts.level1
   );
 };
 
@@ -41,7 +41,7 @@ interface IProps {
 }
 
 interface IState {
-  selectedBoroughName: null | IOldStudentDataItem["name"];
+  selectedBoroughName: null | IOldStudentDataItem["region_name"];
 }
 
 export default class RegionGeoJSONLayer extends React.Component<
@@ -138,7 +138,7 @@ export default class RegionGeoJSONLayer extends React.Component<
     return (
       <GeoJSON
         ref={this.geojsonRef}
-        data={regionsData}
+        data={regionsGeojson}
         onEachFeature={this.onEachFeature}
         style={(feature?: IRegionFeature) => ({
           // fillColor: populationCounts.level1.toString(),

@@ -1,31 +1,111 @@
 [
   {
-    "name": "Bronx",
-    "oldStudentCount": 221
+    "id": 1,
+    "region_name": "Bronx",
+    "state_name": "NY",
+    "student_count_all_time": 221
   },
   {
-    "name": "Queens",
-    "oldStudentCount": 1280
+    "id": 2,
+    "region_name": "Queens",
+    "state_name": "NY",
+    "student_count_all_time": 1280
   },
   {
-    "name": "Manhattan",
-    "oldStudentCount": 2782
+    "id": 3,
+    "region_name": "Manhattan",
+    "state_name": "NY",
+    "student_count_all_time": 2782
   },
   {
-    "name": "Staten Island",
-    "oldStudentCount": 105
+    "id": 4,
+    "region_name": "Staten Island",
+    "state_name": "NY",
+    "student_count_all_time": 105
   },
   {
-    "name": "Brooklyn",
-    "oldStudentCount": 2393,
-    "regionalContact": {
-      "name": "Gretchen Ostheimer",
-      "emailAddress": "Gretchen.Ostheimer@hofstra.edu",
-      "phoneNumber": "551-556-7353"
-    }
+    "id": 5,
+    "region_name": "Brooklyn",
+    "state_name": "NY",
+    "student_count_all_time": 2393,
+    "regional_contact": "{\n      \"name\": \"Gretchen Ostheimer\",\n      \"emailAddress\": \"Gretchen.Ostheimer@hofstra.edu\",\n      \"phoneNumber\": \"551-556-7353\"\n    }"
   },
   {
-    "name": "Essex",
-    "oldStudentCount": 198
+    "id": "6",
+    "region_name": "Bergen",
+    "state_name": "NJ",
+    "student_count_all_time": 350
+  },
+  {
+    "id": "7",
+    "region_name": "Essex",
+    "state_name": "NJ",
+    "student_count_all_time": 198
+  },
+  {
+    "id": "8",
+    "region_name": "Hudson",
+    "state_name": "NJ",
+    "student_count_all_time": 420
+  },
+  {
+    "id": "9",
+    "region_name": "Hunterdon",
+    "state_name": "NJ",
+    "student_count_all_time": 38
+  },
+  {
+    "id": "10",
+    "region_name": "Mercer",
+    "state_name": "NJ",
+    "student_count_all_time": 145
+  },
+  {
+    "id": "11",
+    "region_name": "Middlesex",
+    "state_name": "NJ",
+    "student_count_all_time": 467
+  },
+  {
+    "id": "12",
+    "region_name": "Monmouth",
+    "state_name": "NJ",
+    "student_count_all_time": 142
+  },
+  {
+    "id": "13",
+    "region_name": "Morris",
+    "state_name": "NJ",
+    "student_count_all_time": 211
+  },
+  {
+    "id": "14",
+    "region_name": "Passaic",
+    "state_name": "NJ",
+    "student_count_all_time": 112
+  },
+  {
+    "id": "15",
+    "region_name": "Somerset",
+    "state_name": "NJ",
+    "student_count_all_time": 197
+  },
+  {
+    "id": "16",
+    "region_name": "Sussex",
+    "state_name": "NJ",
+    "student_count_all_time": 20
+  },
+  {
+    "id": "17",
+    "region_name": "Union",
+    "state_name": "NJ",
+    "student_count_all_time": 95
+  },
+  {
+    "id": "18",
+    "region_name": "Warren",
+    "state_name": "NJ",
+    "student_count_all_time": 16
   }
 ]

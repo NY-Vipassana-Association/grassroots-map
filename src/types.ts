@@ -8,8 +8,8 @@ export interface IRegionalContact {
 }
 
 export interface IOldStudentDataItem {
-  name: string;
-  oldStudentCount: number;
+  region_name: string;
+  student_count_all_time: number;
   regionalContact?: IRegionalContact;
 }
 

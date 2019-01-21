@@ -38,7 +38,7 @@ export default class HoveredRegionInfoBox extends React.Component<IProps> {
             <>
               <p className={regionNameP}>{regionName}</p>
               <p className={regionCountP}>
-                {boroughData.oldStudentCount} old students
+                {boroughData.student_count_all_time} old students
               </p>
             </>
           );

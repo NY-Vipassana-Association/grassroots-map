@@ -23,7 +23,7 @@ export const populationColors = {
   [populationCounts.level7]: "#800026"
 };
 
-export function getColor(count: IOldStudentDataItem["oldStudentCount"]) {
+export function getColor(count: IOldStudentDataItem["student_count_all_time"]) {
   const biggestKeySmallerThanCount: populationCounts = Object.keys(
     populationColors
   )
@@ -33,8 +33,12 @@ export function getColor(count: IOldStudentDataItem["oldStudentCount"]) {
   return populationColors[biggestKeySmallerThanCount];
 }
 
-export const getRegionDataByName = (name: IOldStudentDataItem["name"]) => {
-  const regionDataItem = oldStudentData.find(region => region.name === name);
+export const getRegionDataByName = (
+  name: IOldStudentDataItem["region_name"]
+) => {
+  const regionDataItem = oldStudentData.find(
+    region => region.region_name === name
+  );
   if (!regionDataItem)
     console.warn("Could not find old student data for region", {
       name
