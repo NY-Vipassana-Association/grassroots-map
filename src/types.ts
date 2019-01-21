@@ -30,7 +30,7 @@ export interface Borough {
   boroughCode: number;
 }
 
-export interface IRegionGeoJSON extends Leaflet.GeoJSON<Borough> {
+export interface IBoroughGeoJSON extends Leaflet.GeoJSON<Borough> {
   feature: geojson.Feature<geojson.MultiPoint, Borough>;
   _path: SVGPathElement;
 }

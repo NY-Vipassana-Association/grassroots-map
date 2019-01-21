@@ -1,6 +1,6 @@
 import React from "react";
 
-import { IRegionGeoJSON } from "../types";
+import { IBoroughGeoJSON } from "../types";
 import { getBoroughDataByName } from "../helpers";
 
 import {
@@ -17,7 +17,7 @@ import {
 } from "./Box.module.css";
 
 interface IProps {
-  hoveredRegion: null | IRegionGeoJSON;
+  hoveredRegion: null | IBoroughGeoJSON;
 }
 
 export default class HoveredRegionInfoBox extends React.Component<IProps> {

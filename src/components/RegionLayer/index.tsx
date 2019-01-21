@@ -6,7 +6,7 @@ import nycBoroughsData from "../../data/regions";
 
 import {
   IOldStudentDataItem,
-  IRegionGeoJSON,
+  IBoroughGeoJSON,
   IRegionFeature
 } from "../../types";
 
@@ -26,7 +26,7 @@ const mapRegionNameToDataTestName = (
     .split(" ")
     .join("-")}`;
 
-const mapRegionLayerToName = (layer: IRegionGeoJSON) =>
+const mapRegionLayerToName = (layer: IBoroughGeoJSON) =>
   layer.feature.properties.borough;
 
 const getFeatureColor = (feature: IRegionFeature) => {
@@ -38,8 +38,8 @@ const getFeatureColor = (feature: IRegionFeature) => {
 };
 
 interface IProps {
-  setHoveredRegion: (regionName: null | IRegionGeoJSON) => void;
-  hoveredRegion: null | IRegionGeoJSON;
+  setHoveredRegion: (regionName: null | IBoroughGeoJSON) => void;
+  hoveredRegion: null | IBoroughGeoJSON;
 }
 
 interface IState {
@@ -65,7 +65,7 @@ export default class RegionGeoJSONLayer extends React.Component<
     this.setState({ selectedBoroughName: mapRegionLayerToName(event.target) });
   };
 
-  highlightFeature = (layer: IRegionGeoJSON) => {
+  highlightFeature = (layer: IBoroughGeoJSON) => {
     layer.setStyle({
       weight: 5,
       color: "#666",

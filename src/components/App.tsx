@@ -7,7 +7,7 @@ import HoveredRegionInfoBox from "./HoveredRegionInfoBox";
 import GroupSittingMarker from "./GroupSittingMarker";
 import MapLegend from "./MapLegend";
 
-import { IRegionGeoJSON, IGroupSitting } from "../types";
+import { IBoroughGeoJSON, IGroupSitting } from "../types";
 import groupSittingsJSON from "../data/groupSittings.json";
 
 const RegionLayer = React.lazy(() => import("./RegionLayer"));
@@ -17,7 +17,7 @@ const accessToken =
   "pk.eyJ1IjoibmF0YW5pYmFyIiwiYSI6ImNqa2FnMTM5ajM1ajYzbG50dXptMDhjcDIifQ.Dae3BHZd9sexPOk_d76O1g";
 
 interface IState {
-  hoveredRegion: null | IRegionGeoJSON;
+  hoveredRegion: null | IBoroughGeoJSON;
 }
 
 export default class App extends React.Component<{}, IState> {
