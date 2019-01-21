@@ -1,10 +1,10 @@
 import nycBoroughsJSON from "./nycBoroughs.json";
 
-import { IRegionFeatureCollection } from "../../types";
+import { IBoroughFeatureCollection } from "../../types";
 
-const nycBoroughs = (nycBoroughsJSON as unknown) as IRegionFeatureCollection;
+const nycBoroughs = (nycBoroughsJSON as unknown) as IBoroughFeatureCollection;
 
-const nycBoroughsToRegions = (nycBoroughData: IRegionFeatureCollection) => {
+const nycBoroughsToRegions = (nycBoroughData: IBoroughFeatureCollection) => {
   return {
     ...nycBoroughData,
     features: nycBoroughData.features.map(boroughFeature => {

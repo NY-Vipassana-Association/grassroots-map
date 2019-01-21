@@ -36,7 +36,7 @@ export interface IBoroughGeoJSON extends Leaflet.GeoJSON<Borough> {
 }
 
 export type IBoroughFeature = geojson.Feature<geojson.GeometryObject, Borough>;
-export type IRegionFeatureCollection = geojson.FeatureCollection<
+export type IBoroughFeatureCollection = geojson.FeatureCollection<
   geojson.GeometryObject,
   Borough
 >;
