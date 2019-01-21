@@ -2,7 +2,7 @@ import React from "react";
 import { GeoJSON } from "react-leaflet";
 import Leaflet, { LeafletEvent } from "leaflet";
 
-import nycBoroughsData from "../../data/regions";
+import regionData from "../../data/regions";
 
 import {
   IOldStudentDataItem,
@@ -140,7 +140,7 @@ export default class RegionGeoJSONLayer extends React.Component<
     return (
       <GeoJSON
         ref={this.geojsonRef}
-        data={nycBoroughsData}
+        data={regionData}
         onEachFeature={this.onEachFeature}
         style={(feature?: IRegionFeature) => ({
           // fillColor: populationCounts.level1.toString(),

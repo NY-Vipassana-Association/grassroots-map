@@ -1,18 +1,24 @@
 import nycBoroughsJSON from "./nycBoroughs.json";
 import geojson from "geojson";
+import nJNorthernCountiesGeojson from "./nJNorthernCountiesGeojson.json";
 
 import { IRegionFeatureCollection } from "../../types";
 
-interface BoroughProperties {
-  borough: string;
-}
-
 type IBoroughFeatureCollection = geojson.FeatureCollection<
   geojson.GeometryObject,
-  BoroughProperties
+  {
+    borough: string;
+  }
 >;
 
-const nycBoroughs = (nycBoroughsJSON as unknown) as IBoroughFeatureCollection;
+type INewJerseyFeatureCollection = geojson.FeatureCollection<
+  geojson.GeometryObject,
+  {
+    county: string;
+  }
+>;
+
+const njNorthernCountiesGeojsonData = nJNorthernCountiesGeojson as INewJerseyFeatureCollection;
 
 const nycBoroughsToRegions = (
   nycBoroughData: IBoroughFeatureCollection
@@ -30,4 +36,23 @@ const nycBoroughsToRegions = (
   };
 };
 
-export default nycBoroughsToRegions(nycBoroughs);
+const nycBoroughs = (nycBoroughsJSON as unknown) as IBoroughFeatureCollection;
+
+const nycRegions = nycBoroughsToRegions(nycBoroughs).features;
+
+const northernNJRegionCollection: IRegionFeatureCollection = {
+  ...njNorthernCountiesGeojsonData,
+  features: njNorthernCountiesGeojsonData.features.map(boroughFeature => {
+    return {
+      ...boroughFeature,
+      properties: {
+        name: boroughFeature.properties.county
+      }
+    };
+  })
+};
+
+export default {
+  type: nycBoroughs.type,
+  features: [...nycRegions, ...northernNJRegionCollection.features]
+};
