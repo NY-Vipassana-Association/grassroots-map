@@ -9,7 +9,7 @@
     "build": "react-scripts build",
     "test-prod": "CYPRESS_baseUrl=http://localhost:8081 cypress run",
     "deploy": "npm run test-prod && surge --domain vipassana-grassroots-map.surge.sh ./build/",
-    "export-region-data": "gsjson 15bAkyPI-hJj8N0sQGU3f47CCvClewkx6YQAJ-ASC_M4 ./src/data/oldStudentData.json"
+    "prepare-student-data": "gsjson 15bAkyPI-hJj8N0sQGU3f47CCvClewkx6YQAJ-ASC_M4 ./src/data/oldStudentData.json"
   },
   "author": "",
   "license": "ISC",

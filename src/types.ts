@@ -1,16 +1,10 @@
 import Leaflet from "leaflet";
 import geojson from "geojson";
 
-export interface IRegionalContact {
-  name: string;
-  emailAddress: string;
-  phoneNumber: string;
-}
-
 export interface IOldStudentDataItem {
   region_name: string;
   student_count_all_time: number;
-  regionalContact?: IRegionalContact;
+  regional_contact?: string;
 }
 
 export interface IGroupSitting {

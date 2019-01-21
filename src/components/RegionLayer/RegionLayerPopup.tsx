@@ -17,7 +17,7 @@ export default class RegionLayerPopup extends React.Component<IProps> {
 
     if (!boroughData) return null;
 
-    const { regionalContact } = boroughData;
+    const { regional_contact } = boroughData;
 
     return (
       <Popup>
@@ -30,8 +30,11 @@ export default class RegionLayerPopup extends React.Component<IProps> {
           </span>{" "}
           old students in {boroughName}.
         </p>
-        {regionalContact ? (
-          <RegionalContactInfo regionalContact={regionalContact} />
+        {regional_contact ? (
+          <RegionalContactInfo
+            regionName={boroughName}
+            regionalContact={regional_contact}
+          />
         ) : (
           <p>
             If you are interested in joining your local community planning team,
