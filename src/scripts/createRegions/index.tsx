@@ -27,7 +27,7 @@ type INewJerseyFeatureCollection = geojson.FeatureCollection<
 
 const njNorthernCountiesGeojsonData = newJerseyCounties as INewJerseyFeatureCollection;
 
-const nycBoroughs = (nycBoroughsJSON as unknown) as IBoroughFeatureCollection;
+const nycBoroughs = nycBoroughsJSON as IBoroughFeatureCollection;
 
 const nycRegions = nycBoroughs.features.map(boroughFeature => {
   return {
@@ -61,7 +61,9 @@ const allRegions = {
 };
 
 const createRegionsFile = () => {
-  fs.writeFile("../regions.json", allRegions, function(err) {
+  fs.writeFile(`${__dirname}/../../data/regions.json`, allRegions, function(
+    err
+  ) {
     if (err) {
       return console.log(err);
     }
@@ -70,4 +72,4 @@ const createRegionsFile = () => {
   });
 };
 
-export default createRegionsFile;
+createRegionsFile();
