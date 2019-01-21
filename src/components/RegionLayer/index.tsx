@@ -2,10 +2,9 @@ import React from "react";
 import { GeoJSON } from "react-leaflet";
 import Leaflet, { LeafletEvent } from "leaflet";
 
-import nycBoroughsJSON from "../../data/regions/nycBoroughs.json";
+import nycBoroughsData from "../../data/regions";
 
 import {
-  IRegionFeatureCollection,
   IOldStudentDataItem,
   IRegionGeoJSON,
   IRegionFeature
@@ -18,8 +17,6 @@ import {
   getBoroughDataByName,
   populationCounts
 } from "../../helpers";
-
-const nycBoroughsData = (nycBoroughsJSON as unknown) as IRegionFeatureCollection;
 
 const mapRegionNameToDataTestName = (
   name: IRegionFeature["properties"]["borough"]
