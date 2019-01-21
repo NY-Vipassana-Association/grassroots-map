@@ -3,11 +3,13 @@ import { GeoJSON } from "react-leaflet";
 import Leaflet, { LeafletEvent } from "leaflet";
 
 import regionData from "../../data/regions.json";
+const regionsData = regionData as IRegionFeatureCollection;
 
 import {
   IOldStudentDataItem,
   IRegionGeoJSON,
-  IRegionFeature
+  IRegionFeature,
+  IRegionFeatureCollection
 } from "../../types";
 
 import RegionLayerPopup from "./RegionLayerPopup";
@@ -136,7 +138,7 @@ export default class RegionGeoJSONLayer extends React.Component<
     return (
       <GeoJSON
         ref={this.geojsonRef}
-        data={regionData}
+        data={regionsData}
         onEachFeature={this.onEachFeature}
         style={(feature?: IRegionFeature) => ({
           // fillColor: populationCounts.level1.toString(),
