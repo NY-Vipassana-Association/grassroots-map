@@ -8,7 +8,7 @@ import nycBoroughsJSON from "./nycBoroughs.json";
 // - remove southern counties
 // - combine northern counties
 // https://og-production-open-data-newarknj-892364687672.s3.amazonaws.com/resources/95db8cad-3a8c-41a4-b8b1-4991990f07f3/njcountypolygonv2.geojson?Signature=90k42s%2Ftzgo5qhYQ1U%2BaLhacxAU%3D&Expires=1548103718&AWSAccessKeyId=AKIAJJIENTAPKHZMIPXQ
-import nJNorthernCountiesGeojson from "./nJNorthernCountiesGeojson.json";
+import newJerseyCounties from "./newJerseyCounties.json";
 
 type IBoroughFeatureCollection = geojson.FeatureCollection<
   geojson.GeometryObject,
@@ -24,7 +24,7 @@ type INewJerseyFeatureCollection = geojson.FeatureCollection<
   }
 >;
 
-const njNorthernCountiesGeojsonData = nJNorthernCountiesGeojson as INewJerseyFeatureCollection;
+const njNorthernCountiesGeojsonData = newJerseyCounties as INewJerseyFeatureCollection;
 
 const nycBoroughs = (nycBoroughsJSON as unknown) as IBoroughFeatureCollection;
 
@@ -37,18 +37,24 @@ const nycRegions = nycBoroughs.features.map(boroughFeature => {
   };
 });
 
-const northernNJRegionFeatures = njNorthernCountiesGeojsonData.features.map(
-  boroughFeature => {
+const newJerseyCountiesToInclude = ["Essex"];
+
+const newJerseyRegions = njNorthernCountiesGeojsonData.features
+  .filter(newJerseyCountyFeature =>
+    newJerseyCountiesToInclude.includes(
+      newJerseyCountyFeature.properties.county
+    )
+  )
+  .map(newJerseyCountyFeature => {
     return {
-      ...boroughFeature,
+      ...newJerseyCountyFeature,
       properties: {
-        name: "Northern New Jersey"
+        name: newJerseyCountyFeature.properties.county
       }
     };
-  }
-);
+  });
 
 export default {
   type: nycBoroughs.type,
-  features: [...nycRegions, ...northernNJRegionFeatures]
+  features: [...nycRegions, ...newJerseyRegions]
 };
