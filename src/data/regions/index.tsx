@@ -1,9 +1,16 @@
 import nycBoroughsJSON from "./nycBoroughs.json";
+import geojson from "geojson";
 
-import {
-  IBoroughFeatureCollection,
-  IRegionFeatureCollection
-} from "../../types";
+import { IRegionFeatureCollection } from "../../types";
+
+interface BoroughProperties {
+  borough: string;
+}
+
+type IBoroughFeatureCollection = geojson.FeatureCollection<
+  geojson.GeometryObject,
+  BoroughProperties
+>;
 
 const nycBoroughs = (nycBoroughsJSON as unknown) as IBoroughFeatureCollection;
 
