@@ -2,7 +2,7 @@ import React from "react";
 import { GeoJSON } from "react-leaflet";
 import Leaflet, { LeafletEvent } from "leaflet";
 
-import nycBoroughsJSON from "../../data/nycBoroughs.json";
+import nycBoroughsJSON from "../../data/regions/nycBoroughs.json";
 
 import {
   IRegionFeatureCollection,

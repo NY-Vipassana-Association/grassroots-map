@@ -3,3 +3,4 @@ build
 .cache
 cypress/videos
 tmp
+.DS_Store
