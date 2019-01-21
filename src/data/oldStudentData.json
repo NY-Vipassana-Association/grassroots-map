@@ -24,50 +24,79 @@
   {
     "region_name": "Bergen",
     "state_name": "NJ",
-    "student_count_all_time": 350
+    "student_count_all_time": 350,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
   },
-  { "region_name": "Essex", "state_name": "NJ", "student_count_all_time": 198 },
+  {
+    "region_name": "Essex",
+    "state_name": "NJ",
+    "student_count_all_time": 198,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
+  },
   {
     "region_name": "Hudson",
     "state_name": "NJ",
-    "student_count_all_time": 420
+    "student_count_all_time": 420,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
   },
   {
     "region_name": "Hunterdon",
     "state_name": "NJ",
-    "student_count_all_time": 38
+    "student_count_all_time": 38,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
   },
   {
     "region_name": "Mercer",
     "state_name": "NJ",
-    "student_count_all_time": 145
+    "student_count_all_time": 145,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
   },
   {
     "region_name": "Middlesex",
     "state_name": "NJ",
-    "student_count_all_time": 467
+    "student_count_all_time": 467,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
   },
   {
     "region_name": "Monmouth",
     "state_name": "NJ",
-    "student_count_all_time": 142
+    "student_count_all_time": 142,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
   },
   {
     "region_name": "Morris",
     "state_name": "NJ",
-    "student_count_all_time": 211
+    "student_count_all_time": 211,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
   },
   {
     "region_name": "Passaic",
     "state_name": "NJ",
-    "student_count_all_time": 112
+    "student_count_all_time": 112,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
   },
   {
     "region_name": "Somerset",
     "state_name": "NJ",
-    "student_count_all_time": 197
+    "student_count_all_time": 197,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
   },
-  { "region_name": "Sussex", "state_name": "NJ", "student_count_all_time": 20 },
-  { "region_name": "Union", "state_name": "NJ", "student_count_all_time": 95 },
-  { "region_name": "Warren", "state_name": "NJ", "student_count_all_time": 16 }
+  {
+    "region_name": "Sussex",
+    "state_name": "NJ",
+    "student_count_all_time": 20,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
+  },
+  {
+    "region_name": "Union",
+    "state_name": "NJ",
+    "student_count_all_time": 95,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
+  },
+  {
+    "region_name": "Warren",
+    "state_name": "NJ",
+    "student_count_all_time": 16,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
+  }
 ]

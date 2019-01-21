@@ -13,8 +13,8 @@ export default class RegionalContactInfo extends React.Component<IProps> {
     return (
       <div>
         <p>
-          Interested in connecting with your local old-student community? Reach
-          out to our community organizer for {regionName}:
+          Interested in connecting with your local {regionName} old-student
+          community? Reach out to our community organizer:
         </p>
         {regionalContact.split("\\n").map((regionalContactLine, index) => (
           <p style={{ margin: 0 }} key={index}>
