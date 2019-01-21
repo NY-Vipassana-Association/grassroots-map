@@ -27,12 +27,6 @@ export interface IGroupSitting {
 
 export interface BoroughProperties {
   borough: string;
-  boroughCode: number;
-}
-
-export interface RegionProperties {
-  name: string;
-  code: number;
 }
 
 export interface IBoroughGeoJSON extends Leaflet.GeoJSON<BoroughProperties> {
@@ -48,6 +42,10 @@ export type IBoroughFeatureCollection = geojson.FeatureCollection<
   geojson.GeometryObject,
   BoroughProperties
 >;
+
+export interface RegionProperties {
+  name: string;
+}
 
 export interface IRegionGeoJSON extends Leaflet.GeoJSON<RegionProperties> {
   feature: geojson.Feature<geojson.MultiPoint, RegionProperties>;

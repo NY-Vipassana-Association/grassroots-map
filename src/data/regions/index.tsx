@@ -16,8 +16,7 @@ const nycBoroughsToRegions = (
       return {
         ...boroughFeature,
         properties: {
-          name: boroughFeature.properties.borough,
-          code: boroughFeature.properties.boroughCode
+          name: boroughFeature.properties.borough
         }
       };
     })
