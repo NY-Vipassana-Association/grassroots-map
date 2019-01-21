@@ -2,7 +2,7 @@ import React from "react";
 import { GeoJSON } from "react-leaflet";
 import Leaflet, { LeafletEvent } from "leaflet";
 
-import regionData from "../../data/regions";
+import regionData from "../../data/regions.json";
 
 import {
   IOldStudentDataItem,

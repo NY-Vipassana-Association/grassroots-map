@@ -1,3 +1,4 @@
+import fs from "fs";
 import geojson from "geojson";
 
 // NYC borough region data is from the below URL:
@@ -54,7 +55,19 @@ const newJerseyRegions = njNorthernCountiesGeojsonData.features
     };
   });
 
-export default {
+const allRegions = {
   type: nycBoroughs.type,
   features: [...nycRegions, ...newJerseyRegions]
 };
+
+const createRegionsFile = () => {
+  fs.writeFile("../regions.json", allRegions, function(err) {
+    if (err) {
+      return console.log(err);
+    }
+
+    console.log("The file was saved!");
+  });
+};
+
+export default createRegionsFile;
