@@ -34,7 +34,7 @@ const northernNJRegionFeatures = njNorthernCountiesGeojsonData.features.map(
     return {
       ...boroughFeature,
       properties: {
-        name: boroughFeature.properties.county
+        name: "Northern New Jersey"
       }
     };
   }

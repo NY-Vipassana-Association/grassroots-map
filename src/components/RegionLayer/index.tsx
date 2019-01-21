@@ -12,11 +12,7 @@ import {
 
 import RegionLayerPopup from "./RegionLayerPopup";
 
-import {
-  getColor,
-  getBoroughDataByName,
-  populationCounts
-} from "../../helpers";
+import { getColor, getRegionDataByName, populationCounts } from "../../helpers";
 
 const mapRegionNameToDataTestName = (
   name: IRegionFeature["properties"]["name"]
@@ -30,7 +26,7 @@ const mapRegionLayerToName = (layer: IRegionGeoJSON) =>
   layer.feature.properties.name;
 
 const getFeatureColor = (feature: IRegionFeature) => {
-  const boroughData = getBoroughDataByName(feature.properties.name);
+  const boroughData = getRegionDataByName(feature.properties.name);
 
   return getColor(
     boroughData ? boroughData.oldStudentCount : populationCounts.level1

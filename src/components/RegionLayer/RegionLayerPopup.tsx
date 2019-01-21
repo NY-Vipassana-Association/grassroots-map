@@ -3,7 +3,7 @@ import { Popup } from "react-leaflet";
 
 import { IOldStudentDataItem } from "../../types";
 import RegionalContactInfo from "./RegionalContactInfo";
-import { getBoroughDataByName, populationCounts } from "../../helpers";
+import { getRegionDataByName, populationCounts } from "../../helpers";
 
 interface IProps {
   boroughName: IOldStudentDataItem["name"];
@@ -12,7 +12,7 @@ interface IProps {
 export default class RegionLayerPopup extends React.Component<IProps> {
   render() {
     const { boroughName } = this.props;
-    const boroughData = getBoroughDataByName(boroughName);
+    const boroughData = getRegionDataByName(boroughName);
 
     if (!boroughData) return null;
 

@@ -33,10 +33,12 @@ export function getColor(count: IOldStudentDataItem["oldStudentCount"]) {
   return populationColors[biggestKeySmallerThanCount];
 }
 
-export const getBoroughDataByName = (name: IOldStudentDataItem["name"]) => {
-  const boroughDataItem = oldStudentData.find(borough => borough.name === name);
-  if (!boroughDataItem)
-    console.warn("Could not find old student data for borough");
+export const getRegionDataByName = (name: IOldStudentDataItem["name"]) => {
+  const regionDataItem = oldStudentData.find(region => region.name === name);
+  if (!regionDataItem)
+    console.warn("Could not find old student data for region", {
+      name
+    });
 
-  return boroughDataItem;
+  return regionDataItem;
 };

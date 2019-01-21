@@ -23,5 +23,9 @@
       "emailAddress": "Gretchen.Ostheimer@hofstra.edu",
       "phoneNumber": "551-556-7353"
     }
+  },
+  {
+    "name": "Northern New Jersey",
+    "oldStudentCount": 999999
   }
 ]
