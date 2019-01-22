@@ -63,8 +63,8 @@ export default class GroupSittingMarker extends React.Component<IProps> {
             <p>{groupSitting.address} (contact host for full address)</p>
             <p>{groupSitting.time}</p>
             <p>
-              {groupSitting.email}
-              {groupSitting.email && <br />}
+              {groupSitting.email_optional}
+              {groupSitting.email_optional && <br />}
               {groupSitting.phone_number}
             </p>
           </div>

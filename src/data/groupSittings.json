@@ -6,7 +6,7 @@
     "address": "Elm St, Beacon, NY",
     "time": "1st and 3rd Sundays, 9am – 10am",
     "phone_number": "(917) 736-6802",
-    "email": "danbasho@gmail.com"
+    "email_optional": "danbasho@gmail.com"
   },
   {
     "position_lat": 40.5766,

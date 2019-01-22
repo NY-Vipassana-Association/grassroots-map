@@ -14,7 +14,7 @@ export interface IGroupSitting {
   address: string;
   time: string;
   phone_number: string;
-  email?: string;
+  email_optional?: string;
 }
 
 export interface RegionProperties {
