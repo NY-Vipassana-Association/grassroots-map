@@ -22,6 +22,54 @@
     "regional_contact": "Gretchen Ostheimer\\nGretchen.Ostheimer@hofstra.edu\\n551-556-7353"
   },
   {
+    "region_name": "Albany",
+    "state_name": "NY",
+    "student_count_all_time": 101
+  },
+  {
+    "region_name": "Columbia",
+    "state_name": "NY",
+    "student_count_all_time": 97
+  },
+  {
+    "region_name": "Delaware",
+    "state_name": "NY",
+    "student_count_all_time": 28
+  },
+  {
+    "region_name": "Dutchess",
+    "state_name": "NY",
+    "student_count_all_time": 133
+  },
+  { "region_name": "Greene", "state_name": "NY", "student_count_all_time": 21 },
+  {
+    "region_name": "Nassau",
+    "state_name": "NY",
+    "student_count_all_time": 379
+  },
+  { "region_name": "Orange", "state_name": "NY", "student_count_all_time": 52 },
+  { "region_name": "Putnam", "state_name": "NY", "student_count_all_time": 64 },
+  {
+    "region_name": "Rockland",
+    "state_name": "NY",
+    "student_count_all_time": 99
+  },
+  {
+    "region_name": "Sullivan",
+    "state_name": "NY",
+    "student_count_all_time": 29
+  },
+  {
+    "region_name": "Ulster",
+    "state_name": "NY",
+    "student_count_all_time": 129
+  },
+  {
+    "region_name": "Westchester",
+    "state_name": "NY",
+    "student_count_all_time": 345
+  },
+  {
     "region_name": "Bergen",
     "state_name": "NJ",
     "student_count_all_time": 350,
