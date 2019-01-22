@@ -49,7 +49,14 @@ export default class GroupSittingMarker extends React.Component<IProps> {
     const { groupSitting } = this.props;
 
     return (
-      <Marker ref={this.markerRef} icon={icon} position={groupSitting.position}>
+      <Marker
+        ref={this.markerRef}
+        icon={icon}
+        position={{
+          lat: groupSitting.position_lat,
+          lng: groupSitting.position_lng
+        }}
+      >
         <Popup>
           <div data-test={this.getDataTestPopupId()}>
             <h3>Group Sitting</h3>Host: {groupSitting.name}

@@ -8,10 +8,8 @@ export interface IOldStudentDataItem {
 }
 
 export interface IGroupSitting {
-  position: {
-    lat: number;
-    lng: number;
-  };
+  position_lat: number;
+  position_lng: number;
   name: string;
   address: string;
   time: string;
