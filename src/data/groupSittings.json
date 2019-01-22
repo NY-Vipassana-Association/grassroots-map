@@ -3,25 +3,18 @@
     "position_lat": 41.5121,
     "position_lng": -73.969,
     "name": "Dan Doniger",
-    "address": "Elm St, Beacon, NY",
-    "time": "1st and 3rd Sundays, 9am – 10am",
-    "phone_number": "(917) 736-6802",
-    "email_optional": "danbasho@gmail.com"
+    "info": "Elm St, Beacon, NY (contact host for full address)\n\n1st and 3rd Sundays, 9am – 10am\n\n(917) 736-6802\ndanbasho@gmail.com"
   },
   {
     "position_lat": 40.5766,
     "position_lng": -74.3915,
     "name": "Ravi",
-    "address": "Oak Tree Avenue, South Plainfield, NJ",
-    "time": "Saturday 7:30a – 8:30a",
-    "phone_number": "(732) 589-9634"
+    "info": "Oak Tree Avenue, South Plainfield, NJ (contact host for full address)\n\nSaturday 7:30a – 8:30a\n\n(732) 589-9634"
   },
   {
     "position_lat": 40.7113,
     "position_lng": -74.1845,
     "name": "Keven Porter",
-    "address": "Rose Terrace, Newark, NJ",
-    "time": "Most Sundays, 9:00a – Noon. Please call to confirm.",
-    "phone_number": "(973) 477-9914"
+    "info": "Rose Terrace, Newark, NJ (contact host for full address)\n\nMost Sundays, 9:00a – Noon. Please call to confirm.\n\n(973) 477-9914"
   }
 ]

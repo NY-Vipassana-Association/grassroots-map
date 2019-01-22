@@ -59,13 +59,15 @@ export default class GroupSittingMarker extends React.Component<IProps> {
       >
         <Popup>
           <div data-test={this.getDataTestPopupId()}>
-            <h3>Group Sitting</h3>Host: {groupSitting.name}
-            <p>{groupSitting.address} (contact host for full address)</p>
-            <p>{groupSitting.time}</p>
+            <h3>Group Sitting</h3>
+            <p>Host: {groupSitting.name}</p>
             <p>
-              {groupSitting.email_optional}
-              {groupSitting.email_optional && <br />}
-              {groupSitting.phone_number}
+              {groupSitting.info.split("\n").map((infoLine, index) => (
+                <React.Fragment key={index}>
+                  <span>{infoLine}</span>
+                  <br />
+                </React.Fragment>
+              ))}
             </p>
           </div>
         </Popup>

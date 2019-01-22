@@ -11,10 +11,7 @@ export interface IGroupSitting {
   position_lat: number;
   position_lng: number;
   name: string;
-  address: string;
-  time: string;
-  phone_number: string;
-  email_optional?: string;
+  info: string;
 }
 
 export interface RegionProperties {
