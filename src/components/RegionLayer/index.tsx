@@ -28,10 +28,10 @@ const mapRegionLayerToName = (layer: IRegionGeoJSON) =>
   layer.feature.properties.name;
 
 const getFeatureColor = (feature: IRegionFeature) => {
-  const boroughData = getRegionDataByName(feature.properties.name);
+  const regionData = getRegionDataByName(feature.properties.name);
 
   return getColor(
-    boroughData ? boroughData.student_count_all_time : populationCounts.level1
+    regionData ? regionData.student_count_all_time : populationCounts.level1
   );
 };
 
@@ -41,7 +41,7 @@ interface IProps {
 }
 
 interface IState {
-  selectedBoroughName: null | IOldStudentDataItem["region_name"];
+  selectedRegionName: null | IOldStudentDataItem["region_name"];
 }
 
 export default class RegionGeoJSONLayer extends React.Component<
@@ -53,14 +53,14 @@ export default class RegionGeoJSONLayer extends React.Component<
   constructor(props: IProps) {
     super(props);
     this.state = {
-      selectedBoroughName: null
+      selectedRegionName: null
     };
 
     this.geojsonRef = React.createRef();
   }
 
   onClick = (event: LeafletEvent) => {
-    this.setState({ selectedBoroughName: mapRegionLayerToName(event.target) });
+    this.setState({ selectedRegionName: mapRegionLayerToName(event.target) });
   };
 
   highlightFeature = (layer: IRegionGeoJSON) => {
@@ -133,7 +133,7 @@ export default class RegionGeoJSONLayer extends React.Component<
   }
 
   render() {
-    const { selectedBoroughName } = this.state;
+    const { selectedRegionName } = this.state;
 
     return (
       <GeoJSON
@@ -151,8 +151,8 @@ export default class RegionGeoJSONLayer extends React.Component<
           fillOpacity: 0.7
         })}
       >
-        {selectedBoroughName ? (
-          <RegionLayerPopup boroughName={selectedBoroughName} />
+        {selectedRegionName ? (
+          <RegionLayerPopup regionName={selectedRegionName} />
         ) : null}
       </GeoJSON>
     );

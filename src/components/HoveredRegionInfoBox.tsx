@@ -31,14 +31,14 @@ export default class HoveredRegionInfoBox extends React.Component<IProps> {
           if (!hoveredRegion) return "Hover over a region";
 
           const regionName = hoveredRegion.feature.properties.name;
-          const boroughData = getRegionDataByName(regionName);
-          if (!boroughData) return;
+          const regionData = getRegionDataByName(regionName);
+          if (!regionData) return;
 
           return (
             <>
               <p className={regionNameP}>{regionName}</p>
               <p className={regionCountP}>
-                {boroughData.student_count_all_time} old students
+                {regionData.student_count_all_time} old students
               </p>
             </>
           );
