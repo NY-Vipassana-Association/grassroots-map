@@ -1,15 +1,15 @@
-import oldStudentDataJson from "./oldStudentData.json";
+import oldStudentDataJson from "./data/oldStudentData.json";
 import { IOldStudentDataItem } from "./types";
 
 const oldStudentData: IOldStudentDataItem[] = oldStudentDataJson;
 
 export enum populationCounts {
   level1 = 0,
-  level2 = 200,
-  level3 = 500,
-  level4 = 1000,
-  level5 = 1500,
-  level6 = 2000,
+  level2 = 50,
+  level3 = 100,
+  level4 = 200,
+  level5 = 400,
+  level6 = 1500,
   level7 = 2500
 }
 
@@ -23,7 +23,7 @@ export const populationColors = {
   [populationCounts.level7]: "#800026"
 };
 
-export function getColor(count: IOldStudentDataItem["oldStudentCount"]) {
+export function getColor(count: IOldStudentDataItem["student_count_all_time"]) {
   const biggestKeySmallerThanCount: populationCounts = Object.keys(
     populationColors
   )
@@ -33,10 +33,16 @@ export function getColor(count: IOldStudentDataItem["oldStudentCount"]) {
   return populationColors[biggestKeySmallerThanCount];
 }
 
-export const getBoroughDataByName = (name: IOldStudentDataItem["name"]) => {
-  const boroughDataItem = oldStudentData.find(borough => borough.name === name);
-  if (!boroughDataItem)
-    console.warn("Could not find old student data for borough");
+export const getRegionDataByName = (
+  name: IOldStudentDataItem["region_name"]
+) => {
+  const regionDataItem = oldStudentData.find(
+    region => region.region_name === name
+  );
+  if (!regionDataItem)
+    console.warn("Could not find old student data for region", {
+      name
+    });
 
-  return boroughDataItem;
+  return regionDataItem;
 };

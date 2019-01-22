@@ -16,4 +16,29 @@ describe("Region Tooltip", () => {
       `There are ${numManhattanOldStudents} old students in Manhattan.`
     );
   });
+
+  it("shows regional contact info when available", () => {
+    cy.visit("");
+    cy.get("[data-test=region-brooklyn]")
+      .eq(4)
+      .click();
+
+    cy.contains(
+      "Interested in connecting with your local Brooklyn old-student community? Reach out to our community organizer:"
+    );
+    cy.contains("Gretchen Ostheimer");
+    cy.contains("Gretchen.Ostheimer@hofstra.edu");
+    cy.contains("551-556-7353");
+  });
+
+  it("shows planning committee contact info when there is no regional contact", () => {
+    cy.visit("");
+    cy.get("[data-test=region-bronx]")
+      .eq(4)
+      .click();
+
+    cy.contains(
+      "If you are interested in joining your local community planning team, please reach out to our Dhamma Service Committee at dhammaservice.nyva@gmail.com or (413) 438-7821."
+    );
+  });
 });

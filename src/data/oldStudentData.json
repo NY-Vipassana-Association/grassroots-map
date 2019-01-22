@@ -1,0 +1,150 @@
+[
+  { "region_name": "Bronx", "state_name": "NY", "student_count_all_time": 221 },
+  {
+    "region_name": "Queens",
+    "state_name": "NY",
+    "student_count_all_time": 1280
+  },
+  {
+    "region_name": "Manhattan",
+    "state_name": "NY",
+    "student_count_all_time": 2782
+  },
+  {
+    "region_name": "Staten Island",
+    "state_name": "NY",
+    "student_count_all_time": 105
+  },
+  {
+    "region_name": "Brooklyn",
+    "state_name": "NY",
+    "student_count_all_time": 2393,
+    "regional_contact": "Gretchen Ostheimer\\nGretchen.Ostheimer@hofstra.edu\\n551-556-7353"
+  },
+  {
+    "region_name": "Albany",
+    "state_name": "NY",
+    "student_count_all_time": 101
+  },
+  {
+    "region_name": "Columbia",
+    "state_name": "NY",
+    "student_count_all_time": 97
+  },
+  {
+    "region_name": "Delaware",
+    "state_name": "NY",
+    "student_count_all_time": 28
+  },
+  {
+    "region_name": "Dutchess",
+    "state_name": "NY",
+    "student_count_all_time": 133
+  },
+  { "region_name": "Greene", "state_name": "NY", "student_count_all_time": 21 },
+  {
+    "region_name": "Nassau",
+    "state_name": "NY",
+    "student_count_all_time": 379
+  },
+  { "region_name": "Orange", "state_name": "NY", "student_count_all_time": 52 },
+  { "region_name": "Putnam", "state_name": "NY", "student_count_all_time": 64 },
+  {
+    "region_name": "Rockland",
+    "state_name": "NY",
+    "student_count_all_time": 99
+  },
+  {
+    "region_name": "Sullivan",
+    "state_name": "NY",
+    "student_count_all_time": 29
+  },
+  {
+    "region_name": "Ulster",
+    "state_name": "NY",
+    "student_count_all_time": 129
+  },
+  {
+    "region_name": "Westchester",
+    "state_name": "NY",
+    "student_count_all_time": 345
+  },
+  {
+    "region_name": "Bergen",
+    "state_name": "NJ",
+    "student_count_all_time": 350,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
+  },
+  {
+    "region_name": "Essex",
+    "state_name": "NJ",
+    "student_count_all_time": 198,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
+  },
+  {
+    "region_name": "Hudson",
+    "state_name": "NJ",
+    "student_count_all_time": 420,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
+  },
+  {
+    "region_name": "Hunterdon",
+    "state_name": "NJ",
+    "student_count_all_time": 38,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
+  },
+  {
+    "region_name": "Mercer",
+    "state_name": "NJ",
+    "student_count_all_time": 145,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
+  },
+  {
+    "region_name": "Middlesex",
+    "state_name": "NJ",
+    "student_count_all_time": 467,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
+  },
+  {
+    "region_name": "Monmouth",
+    "state_name": "NJ",
+    "student_count_all_time": 142,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
+  },
+  {
+    "region_name": "Morris",
+    "state_name": "NJ",
+    "student_count_all_time": 211,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
+  },
+  {
+    "region_name": "Passaic",
+    "state_name": "NJ",
+    "student_count_all_time": 112,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
+  },
+  {
+    "region_name": "Somerset",
+    "state_name": "NJ",
+    "student_count_all_time": 197,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
+  },
+  {
+    "region_name": "Sussex",
+    "state_name": "NJ",
+    "student_count_all_time": 20,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
+  },
+  {
+    "region_name": "Union",
+    "state_name": "NJ",
+    "student_count_all_time": 95,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
+  },
+  {
+    "region_name": "Warren",
+    "state_name": "NJ",
+    "student_count_all_time": 16,
+    "regional_contact": "Vikas Churiwalla\\nvchuri@mac.com\\n973-457-8680"
+  }
+]

@@ -2,3 +2,5 @@ node_modules
 build
 .cache
 cypress/videos
+tmp
+.DS_Store

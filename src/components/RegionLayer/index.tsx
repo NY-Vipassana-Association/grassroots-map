@@ -2,27 +2,22 @@ import React from "react";
 import { GeoJSON } from "react-leaflet";
 import Leaflet, { LeafletEvent } from "leaflet";
 
-import nycBoroughsJSON from "../../nycBoroughs.json";
+import _regionsGeojson from "../../data/regions.json";
+const regionsGeojson = _regionsGeojson as IRegionFeatureCollection;
 
 import {
-  IRegionFeatureCollection,
   IOldStudentDataItem,
   IRegionGeoJSON,
-  IRegionFeature
+  IRegionFeature,
+  IRegionFeatureCollection
 } from "../../types";
 
 import RegionLayerPopup from "./RegionLayerPopup";
 
-import {
-  getColor,
-  getBoroughDataByName,
-  populationCounts
-} from "../../helpers";
-
-const nycBoroughsData = (nycBoroughsJSON as unknown) as IRegionFeatureCollection;
+import { getColor, getRegionDataByName, populationCounts } from "../../helpers";
 
 const mapRegionNameToDataTestName = (
-  name: IRegionFeature["properties"]["borough"]
+  name: IRegionFeature["properties"]["name"]
 ) =>
   `region-${name
     .toLowerCase()
@@ -30,13 +25,13 @@ const mapRegionNameToDataTestName = (
     .join("-")}`;
 
 const mapRegionLayerToName = (layer: IRegionGeoJSON) =>
-  layer.feature.properties.borough;
+  layer.feature.properties.name;
 
 const getFeatureColor = (feature: IRegionFeature) => {
-  const boroughData = getBoroughDataByName(feature.properties.borough);
+  const boroughData = getRegionDataByName(feature.properties.name);
 
   return getColor(
-    boroughData ? boroughData.oldStudentCount : populationCounts.level1
+    boroughData ? boroughData.student_count_all_time : populationCounts.level1
   );
 };
 
@@ -46,7 +41,7 @@ interface IProps {
 }
 
 interface IState {
-  selectedBoroughName: null | IOldStudentDataItem["name"];
+  selectedBoroughName: null | IOldStudentDataItem["region_name"];
 }
 
 export default class RegionGeoJSONLayer extends React.Component<
@@ -143,7 +138,7 @@ export default class RegionGeoJSONLayer extends React.Component<
     return (
       <GeoJSON
         ref={this.geojsonRef}
-        data={nycBoroughsData}
+        data={regionsGeojson}
         onEachFeature={this.onEachFeature}
         style={(feature?: IRegionFeature) => ({
           // fillColor: populationCounts.level1.toString(),

@@ -1,16 +1,10 @@
 import Leaflet from "leaflet";
 import geojson from "geojson";
 
-export interface IRegionalContact {
-  name: string;
-  emailAddress: string;
-  phoneNumber: string;
-}
-
 export interface IOldStudentDataItem {
-  name: string;
-  oldStudentCount: number;
-  regionalContact?: IRegionalContact;
+  region_name: string;
+  student_count_all_time: number;
+  regional_contact?: string;
 }
 
 export interface IGroupSitting {
@@ -25,18 +19,21 @@ export interface IGroupSitting {
   email?: string;
 }
 
-export interface Borough {
-  borough: string;
-  boroughCode: number;
+export interface RegionProperties {
+  name: string;
 }
 
-export interface IRegionGeoJSON extends Leaflet.GeoJSON<Borough> {
-  feature: geojson.Feature<geojson.MultiPoint, Borough>;
+export interface IRegionGeoJSON extends Leaflet.GeoJSON<RegionProperties> {
+  feature: geojson.Feature<geojson.MultiPoint, RegionProperties>;
   _path: SVGPathElement;
 }
 
-export type IRegionFeature = geojson.Feature<geojson.GeometryObject, Borough>;
+export type IRegionFeature = geojson.Feature<
+  geojson.GeometryObject,
+  RegionProperties
+>;
+
 export type IRegionFeatureCollection = geojson.FeatureCollection<
   geojson.GeometryObject,
-  Borough
+  RegionProperties
 >;

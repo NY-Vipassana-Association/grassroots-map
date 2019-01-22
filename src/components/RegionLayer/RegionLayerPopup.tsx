@@ -3,20 +3,21 @@ import { Popup } from "react-leaflet";
 
 import { IOldStudentDataItem } from "../../types";
 import RegionalContactInfo from "./RegionalContactInfo";
-import { getBoroughDataByName, populationCounts } from "../../helpers";
+import { getRegionDataByName, populationCounts } from "../../helpers";
 
+// todo: rename from borough to region
 interface IProps {
-  boroughName: IOldStudentDataItem["name"];
+  boroughName: IOldStudentDataItem["region_name"];
 }
 
 export default class RegionLayerPopup extends React.Component<IProps> {
   render() {
     const { boroughName } = this.props;
-    const boroughData = getBoroughDataByName(boroughName);
+    const boroughData = getRegionDataByName(boroughName);
 
     if (!boroughData) return null;
 
-    const { regionalContact } = boroughData;
+    const { regional_contact } = boroughData;
 
     return (
       <Popup>
@@ -24,13 +25,16 @@ export default class RegionLayerPopup extends React.Component<IProps> {
           There are{" "}
           <span>
             {boroughData
-              ? boroughData.oldStudentCount
+              ? boroughData.student_count_all_time
               : populationCounts.level1}
           </span>{" "}
           old students in {boroughName}.
         </p>
-        {regionalContact ? (
-          <RegionalContactInfo regionalContact={regionalContact} />
+        {regional_contact ? (
+          <RegionalContactInfo
+            regionName={boroughName}
+            regionalContact={regional_contact}
+          />
         ) : (
           <p>
             If you are interested in joining your local community planning team,

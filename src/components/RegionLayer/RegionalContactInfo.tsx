@@ -1,20 +1,27 @@
 import React from "react";
-import { IRegionalContact } from "../../types";
+import { IOldStudentDataItem } from "../../types";
 
 interface IProps {
-  regionalContact: IRegionalContact;
+  regionName: IOldStudentDataItem["region_name"];
+  regionalContact: string;
 }
 
 export default class RegionalContactInfo extends React.Component<IProps> {
   render() {
-    const { regionalContact } = this.props;
+    const { regionName, regionalContact } = this.props;
 
     return (
-      <p>
-        Interested in connecting with the local Brooklyn old-student community?
-        Reach out to our Brooklyn Community Organizer, {regionalContact.name},
-        at {regionalContact.emailAddress} or {regionalContact.phoneNumber}.
-      </p>
+      <div>
+        <p>
+          Interested in connecting with your local {regionName} old-student
+          community? Reach out to our community organizer:
+        </p>
+        {regionalContact.split("\\n").map((regionalContactLine, index) => (
+          <p style={{ margin: 0 }} key={index}>
+            {regionalContactLine}
+          </p>
+        ))}
+      </div>
     );
   }
 }

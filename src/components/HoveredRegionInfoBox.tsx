@@ -1,7 +1,7 @@
 import React from "react";
 
 import { IRegionGeoJSON } from "../types";
-import { getBoroughDataByName } from "../helpers";
+import { getRegionDataByName } from "../helpers";
 
 import {
   // @ts-ignore todo
@@ -30,17 +30,15 @@ export default class HoveredRegionInfoBox extends React.Component<IProps> {
         {(() => {
           if (!hoveredRegion) return "Hover over a region";
 
-          const regionName = hoveredRegion.feature.properties.borough;
-          const boroughData = getBoroughDataByName(
-            hoveredRegion.feature.properties.borough
-          );
+          const regionName = hoveredRegion.feature.properties.name;
+          const boroughData = getRegionDataByName(regionName);
           if (!boroughData) return;
 
           return (
             <>
               <p className={regionNameP}>{regionName}</p>
               <p className={regionCountP}>
-                {boroughData.oldStudentCount} old students
+                {boroughData.student_count_all_time} old students
               </p>
             </>
           );
