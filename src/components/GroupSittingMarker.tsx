@@ -65,7 +65,7 @@ export default class GroupSittingMarker extends React.Component<IProps> {
             <p>
               {groupSitting.email}
               {groupSitting.email && <br />}
-              {groupSitting.phoneNumber}
+              {groupSitting.phone_number}
             </p>
           </div>
         </Popup>

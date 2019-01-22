@@ -13,7 +13,7 @@ export interface IGroupSitting {
   name: string;
   address: string;
   time: string;
-  phoneNumber: string;
+  phone_number: string;
   email?: string;
 }
 
