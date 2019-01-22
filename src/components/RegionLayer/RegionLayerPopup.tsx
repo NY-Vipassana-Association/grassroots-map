@@ -5,34 +5,33 @@ import { IOldStudentDataItem } from "../../types";
 import RegionalContactInfo from "./RegionalContactInfo";
 import { getRegionDataByName, populationCounts } from "../../helpers";
 
-// todo: rename from borough to region
 interface IProps {
-  boroughName: IOldStudentDataItem["region_name"];
+  regionName: IOldStudentDataItem["region_name"];
 }
 
 export default class RegionLayerPopup extends React.Component<IProps> {
   render() {
-    const { boroughName } = this.props;
-    const boroughData = getRegionDataByName(boroughName);
+    const { regionName } = this.props;
+    const regionData = getRegionDataByName(regionName);
 
-    if (!boroughData) return null;
+    if (!regionData) return null;
 
-    const { regional_contact } = boroughData;
+    const { regional_contact } = regionData;
 
     return (
       <Popup>
         <p>
           There are{" "}
           <span>
-            {boroughData
-              ? boroughData.student_count_all_time
+            {regionData
+              ? regionData.student_count_all_time
               : populationCounts.level1}
           </span>{" "}
-          old students in {boroughName}.
+          old students in {regionName}.
         </p>
         {regional_contact ? (
           <RegionalContactInfo
-            regionName={boroughName}
+            regionName={regionName}
             regionalContact={regional_contact}
           />
         ) : (
