@@ -16,12 +16,12 @@ export enum populationCounts {
 // generated with http://www.perbang.dk/rgbgradient/
 export const populationColors = {
   [populationCounts.level1]: "#85F4FF",
-  [populationCounts.level2]: "#6ED7F4",
-  [populationCounts.level3]: "#58BBEA",
-  [populationCounts.level4]: "#429FE0",
-  [populationCounts.level5]: "#2C82D6",
-  [populationCounts.level6]: "#1666CC",
-  [populationCounts.level7]: "#004AC2"
+  [populationCounts.level2]: "#6ED2EA",
+  [populationCounts.level3]: "#58B0D6",
+  [populationCounts.level4]: "#428EC2",
+  [populationCounts.level5]: "#2C6CAD",
+  [populationCounts.level6]: "#164A99",
+  [populationCounts.level7]: "#002985"
 };
 
 export function getColor(count: IOldStudentDataItem["student_count_all_time"]) {
