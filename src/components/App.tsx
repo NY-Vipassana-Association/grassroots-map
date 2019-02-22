@@ -14,7 +14,7 @@ const RegionLayer = React.lazy(() => import("./RegionLayer"));
 const groupSittings: IGroupSitting[] = groupSittingsJSON;
 
 const accessToken =
-  "pk.eyJ1IjoibmF0YW5pYmFyIiwiYSI6ImNqa2FnMTM5ajM1ajYzbG50dXptMDhjcDIifQ.Dae3BHZd9sexPOk_d76O1g";
+  "pk.eyJ1Ijoibnl2YSIsImEiOiJjanJ3dWVud3kwZ3BwNDRvOGNyOHdsYnVrIn0.t7R_ElgMs18HNgvj3swziQ";
 
 interface IState {
   hoveredRegion: null | IRegionGeoJSON;
@@ -42,7 +42,7 @@ export default class App extends React.Component<{}, IState> {
           <TileLayer
             attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
             maxZoom={18}
-            url={`https://api.mapbox.com/styles/v1/natanibar/cjkbf9gr8019f2rqllw7uz3ep/tiles/{z}/{x}/{y}?access_token=${accessToken}`}
+            url={`https://api.mapbox.com/styles/v1/nyva/cjsg3abro31p81fmmn4s628ze/tiles/{z}/{x}/{y}?access_token=${accessToken}`}
           />
           <Suspense fallback={null}>
             <RegionLayer
