@@ -15,13 +15,13 @@ export enum populationCounts {
 
 // generated with http://www.perbang.dk/rgbgradient/
 export const populationColors = {
-  [populationCounts.level1]: "#85F4FF",
-  [populationCounts.level2]: "#6ED2EA",
-  [populationCounts.level3]: "#58B0D6",
-  [populationCounts.level4]: "#428EC2",
-  [populationCounts.level5]: "#2C6CAD",
-  [populationCounts.level6]: "#164A99",
-  [populationCounts.level7]: "#002985"
+  [populationCounts.level1]: "#C7CED6",
+  [populationCounts.level2]: "#ABBEC5",
+  [populationCounts.level3]: "#8098BC",
+  [populationCounts.level4]: "#4D5D76",
+  [populationCounts.level5]: "#403D48",
+  [populationCounts.level6]: "#DFC2AB",
+  [populationCounts.level7]: "#D3764E"
 };
 
 export function getColor(count: IOldStudentDataItem["student_count_all_time"]) {
