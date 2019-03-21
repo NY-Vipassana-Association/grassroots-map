@@ -26,9 +26,9 @@ describe("Region Tooltip", () => {
     cy.contains(
       "Interested in connecting with your local Brooklyn old-student community? Reach out to our community organizer:"
     );
-    cy.contains("Gretchen Ostheimer");
-    cy.contains("Gretchen.Ostheimer@hofstra.edu");
-    cy.contains("551-556-7353");
+    cy.contains("Gretchen Ostheimer and Chris Dingman");
+    cy.contains("brooklynplanning.nyva@gmail.com");
+    cy.contains("413-489-0025");
   });
 
   it("shows planning committee contact info when there is no regional contact", () => {
