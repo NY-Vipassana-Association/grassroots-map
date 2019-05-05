@@ -23,3 +23,11 @@ jobs:
           paths:
             - ~/.npm
             - ~/.cache
+      - run:
+          name: Run Cypress tests
+          command: |
+            export TZ=America/New_York
+            npm run build
+            npx --no-install http-server ./build/ -p 8081 &
+            npx --no-install wait-on http://localhost:8081 --timeout 30000
+            npx --no-install cypress run --record --config baseUrl=http://localhost:8081
