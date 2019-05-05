@@ -3,5 +3,6 @@ build
 .cache
 cypress/videos
 cypress/screenshots
+src/data/gitignored
 tmp
 .DS_Store

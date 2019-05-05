@@ -8,7 +8,7 @@ import GroupSittingMarker from "./GroupSittingMarker";
 import MapLegend from "./MapLegend";
 
 import { IRegionGeoJSON, IGroupSitting } from "../types";
-import groupSittingsJSON from "../data/groupSittings.json";
+import groupSittingsJSON from "../data/gitignored/groupSittings.json";
 
 const RegionLayer = React.lazy(() => import("./RegionLayer"));
 const groupSittings: IGroupSitting[] = groupSittingsJSON;
