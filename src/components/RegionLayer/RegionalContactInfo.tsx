@@ -8,11 +8,14 @@ interface IProps {
 
 export default class RegionalContactInfo extends React.Component<IProps> {
   render() {
-    const { regionalContact } = this.props;
+    const { regionName, regionalContact } = this.props;
 
     return (
       <div>
-        <p />
+        <p>
+          Interested in connecting with your local {regionName} old-student
+          community? Reach out to our community organizer:
+        </p>
         {regionalContact.split("\n").map((regionalContactLine, index) => (
           <p style={{ margin: 0 }} key={index}>
             {regionalContactLine}
