@@ -1,4 +1,4 @@
-import oldStudentDataJson from "./data/oldStudentData.json";
+import oldStudentDataJson from "./data/gitignored/oldStudentData.json";
 import { IOldStudentDataItem } from "./types";
 
 const oldStudentData: IOldStudentDataItem[] = oldStudentDataJson;
