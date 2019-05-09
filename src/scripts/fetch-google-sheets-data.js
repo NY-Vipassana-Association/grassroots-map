@@ -3,7 +3,7 @@ const gsjson = require("google-spreadsheet-to-json");
 const fs = require("fs");
 
 // Inserts the old student counts from the all_county_student_counts worksheet
-// into the map counties worksheet
+// into the map_counties worksheet
 const includeOldStudentCounts = (
   mapCounties,
   allCountyStudentCountsResponse
@@ -39,7 +39,7 @@ gsjson({
 })
   .then(function(result) {
     const studentCountsResponse = result[0];
-    const groupSittingsResponse = result[1];
+    const mapCounties = result[1];
     const allCountyStudentCountsResponse = result[2];
 
     fs.writeFileSync(
@@ -54,7 +54,7 @@ gsjson({
 
     fs.writeFileSync(
       "./src/data/gitignored/groupSittings.json",
-      JSON.stringify(groupSittingsResponse)
+      JSON.stringify(mapCounties)
     );
   })
   .catch(function(err) {
