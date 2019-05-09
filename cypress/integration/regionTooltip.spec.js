@@ -5,7 +5,7 @@ describe("Region Tooltip", () => {
       .first()
       .click();
 
-    const numManhattanOldStudents = 2782;
+    const numManhattanOldStudents = 3320;
     cy.contains(
       `There are ${numManhattanOldStudents} old students in Manhattan.`
     );
