@@ -1,6 +1,6 @@
 describe("Hover Info Box", () => {
   it("shows number of old students on hover", () => {
-    const numManhattanOldStudents = 2782;
+    const numManhattanOldStudents = 3320;
     cy.visit("");
 
     cy.get("[data-test=hover-info-box]").contains("Vipassana Grassroots Map");
