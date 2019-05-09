@@ -13,6 +13,9 @@ const includeOldStudentCounts = (
       countyWithStudentCount =>
         countyWithStudentCount.state === mapCounty.state_name &&
         (countyWithStudentCount.county === mapCounty.region_name ||
+          // if the name we use for the map county doesn't match the student count
+          // county's name, then check for an official name (i.e. Brooklyn's
+          // official name is Kings)
           countyWithStudentCount.county === mapCounty.official_name)
     );
 
