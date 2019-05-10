@@ -36,16 +36,19 @@ const includeOldStudentCounts = (
   });
 };
 
+const getMetadata = allWorksheets => {
+  const metadataWorksheet = allWorksheets[3];
+  return metadataWorksheet[0];
+};
+
 gsjson({
   spreadsheetId: "15bAkyPI-hJj8N0sQGU3f47CCvClewkx6YQAJ-ASC_M4",
   allWorksheets: true
 })
-  .then(function(result) {
-    const studentCountsResponse = result[0];
-    const mapCounties = result[1];
-    const allCountyStudentCountsResponse = result[2];
-    const metadataResponse = result[3];
-    const metadata = metadataResponse[0];
+  .then(function(allWorksheets) {
+    const studentCountsResponse = allWorksheets[0];
+    const mapCounties = allWorksheets[1];
+    const allCountyStudentCountsResponse = allWorksheets[2];
 
     fs.writeFileSync(
       "./src/data/gitignored/oldStudentData.json",
@@ -64,7 +67,7 @@ gsjson({
 
     fs.writeFileSync(
       "./src/data/gitignored/metadata.json",
-      JSON.stringify(metadata)
+      JSON.stringify(getMetadata(allWorksheets))
     );
   })
   .catch(function(err) {
