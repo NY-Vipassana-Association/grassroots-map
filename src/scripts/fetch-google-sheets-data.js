@@ -36,6 +36,10 @@ const includeOldStudentCounts = (
   });
 };
 
+const getGroupSittings = allWorksheets => {
+  return allWorksheets[1];
+};
+
 const getMetadata = allWorksheets => {
   const metadataWorksheet = allWorksheets[3];
   return metadataWorksheet[0];
@@ -47,7 +51,6 @@ gsjson({
 })
   .then(function(allWorksheets) {
     const studentCountsResponse = allWorksheets[0];
-    const mapCounties = allWorksheets[1];
     const allCountyStudentCountsResponse = allWorksheets[2];
 
     fs.writeFileSync(
@@ -62,7 +65,7 @@ gsjson({
 
     fs.writeFileSync(
       "./src/data/gitignored/groupSittings.json",
-      JSON.stringify(mapCounties)
+      JSON.stringify(getGroupSittings(allWorksheets))
     );
 
     fs.writeFileSync(
