@@ -6,6 +6,7 @@ import DhammaHouseMarker from "./DhammaHouseMarker";
 import HoveredRegionInfoBox from "./HoveredRegionInfoBox";
 import GroupSittingMarker from "./GroupSittingMarker";
 import MapLegend from "./MapLegend";
+import metadataJSON from "../data/gitignored/metadata.json";
 
 import { IRegionGeoJSON, IGroupSitting } from "../types";
 import groupSittingsJSON from "../data/gitignored/groupSittings.json";
@@ -19,6 +20,13 @@ const accessToken =
 interface IState {
   hoveredRegion: null | IRegionGeoJSON;
 }
+
+const formatLastUpdatedDate = (date: Date) => {
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  return `${month}/${day}/${year}`;
+};
 
 export default class App extends React.Component<{}, IState> {
   state = {
@@ -40,7 +48,9 @@ export default class App extends React.Component<{}, IState> {
           zoom={11}
         >
           <TileLayer
-            attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
+            attribution={`Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a><br /><span>Nonidentifiable student data exported from DhammaReg database on ${formatLastUpdatedDate(
+              new Date(metadataJSON.all_county_student_counts__last_updated)
+            )}</span>`}
             maxZoom={18}
             url={`https://api.mapbox.com/styles/v1/nyva/cjsg3abro31p81fmmn4s628ze/tiles/{z}/{x}/{y}?access_token=${accessToken}`}
           />
