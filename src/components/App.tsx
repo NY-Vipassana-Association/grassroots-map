@@ -62,7 +62,7 @@ const Attribution = () => {
       <span>
         Counts are of old students of Vipassana as taught by S.N. Goenka in the
         North American Old Student Database, as of {getLastUpdatedDate()}. Only
-        counts are included in the map, no personal information is included.
+        counts are included in the map; no personal information is included.
       </span>
     </span>
   );
