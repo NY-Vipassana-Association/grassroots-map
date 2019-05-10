@@ -36,28 +36,43 @@ const includeOldStudentCounts = (
   });
 };
 
+const getMapCounties = allWorksheets => {
+  const studentCountsResponse = allWorksheets[0];
+  const allCountyStudentCountsResponse = allWorksheets[2];
+
+  return includeOldStudentCounts(
+    studentCountsResponse,
+    allCountyStudentCountsResponse
+  );
+};
+
+const getGroupSittings = allWorksheets => {
+  return allWorksheets[1];
+};
+
+const getMetadata = allWorksheets => {
+  const metadataWorksheet = allWorksheets[3];
+  return metadataWorksheet[0];
+};
+
 gsjson({
   spreadsheetId: "15bAkyPI-hJj8N0sQGU3f47CCvClewkx6YQAJ-ASC_M4",
   allWorksheets: true
 })
-  .then(function(result) {
-    const studentCountsResponse = result[0];
-    const mapCounties = result[1];
-    const allCountyStudentCountsResponse = result[2];
-
+  .then(function(allWorksheets) {
     fs.writeFileSync(
       "./src/data/gitignored/oldStudentData.json",
-      JSON.stringify(
-        includeOldStudentCounts(
-          studentCountsResponse,
-          allCountyStudentCountsResponse
-        )
-      )
+      JSON.stringify(getMapCounties(allWorksheets))
     );
 
     fs.writeFileSync(
       "./src/data/gitignored/groupSittings.json",
-      JSON.stringify(mapCounties)
+      JSON.stringify(getGroupSittings(allWorksheets))
+    );
+
+    fs.writeFileSync(
+      "./src/data/gitignored/metadata.json",
+      JSON.stringify(getMetadata(allWorksheets))
     );
   })
   .catch(function(err) {

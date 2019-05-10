@@ -5,3 +5,7 @@
 .mapContainer {
   height: 100%;
 }
+
+:global(.leaflet-control-attribution) {
+  max-width: 487px;
+}
