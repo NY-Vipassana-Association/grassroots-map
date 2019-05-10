@@ -53,11 +53,12 @@ const getLastUpdatedDate = () =>
 const Attribution = () => {
   return (
     <span>
-      Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>{" "}
-      contributors,{" "}
-      <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>,
-      Imagery © <a href="https://www.mapbox.com/">Mapbox</a>
-      <br />
+      <span>
+        Map data &copy;{" "}
+        <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors,{" "}
+        <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>,
+        Imagery © <a href="https://www.mapbox.com/">Mapbox</a>.{" "}
+      </span>
       <span>
         Counts are of old students of Vipassana as taught by S.N. Goenka in the
         North American Old Student Database, as of {getLastUpdatedDate()}. Only
