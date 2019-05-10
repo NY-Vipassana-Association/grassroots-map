@@ -19,16 +19,15 @@ describe("Region Tooltip", () => {
 
   it("shows regional contact info when available", () => {
     cy.visit("");
-    cy.get("[data-test=region-brooklyn]")
-      .eq(4)
-      .click();
+    cy.get("[data-test=region-hudson]").click();
 
     cy.contains(
-      "Interested in connecting with your local Brooklyn old-student community? Reach out to our community organizer:"
+      "Interested in connecting with your local Hudson old-student community? Reach out to our community organizer:"
     );
-    cy.contains("Gretchen Ostheimer");
-    cy.contains("brooklynplanning.nyva@gmail.com");
-    cy.contains("413-489-0025");
+
+    cy.contains("Vikas Churiwalla and Nandini Konar");
+    cy.contains("northernnj.nyva@gmail.com");
+    cy.contains("973-457-8680");
   });
 
   it("shows planning committee contact info when there is no regional contact", () => {
