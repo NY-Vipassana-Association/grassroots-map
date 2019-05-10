@@ -36,6 +36,16 @@ const includeOldStudentCounts = (
   });
 };
 
+const getMapCounties = allWorksheets => {
+  const studentCountsResponse = allWorksheets[0];
+  const allCountyStudentCountsResponse = allWorksheets[2];
+
+  return includeOldStudentCounts(
+    studentCountsResponse,
+    allCountyStudentCountsResponse
+  );
+};
+
 const getGroupSittings = allWorksheets => {
   return allWorksheets[1];
 };
@@ -50,17 +60,9 @@ gsjson({
   allWorksheets: true
 })
   .then(function(allWorksheets) {
-    const studentCountsResponse = allWorksheets[0];
-    const allCountyStudentCountsResponse = allWorksheets[2];
-
     fs.writeFileSync(
       "./src/data/gitignored/oldStudentData.json",
-      JSON.stringify(
-        includeOldStudentCounts(
-          studentCountsResponse,
-          allCountyStudentCountsResponse
-        )
-      )
+      JSON.stringify(getMapCounties(allWorksheets))
     );
 
     fs.writeFileSync(
