@@ -44,6 +44,8 @@ gsjson({
     const studentCountsResponse = result[0];
     const mapCounties = result[1];
     const allCountyStudentCountsResponse = result[2];
+    const metadataResponse = result[3];
+    const metadata = metadataResponse[0];
 
     fs.writeFileSync(
       "./src/data/gitignored/oldStudentData.json",
@@ -58,6 +60,11 @@ gsjson({
     fs.writeFileSync(
       "./src/data/gitignored/groupSittings.json",
       JSON.stringify(mapCounties)
+    );
+
+    fs.writeFileSync(
+      "./src/data/gitignored/metadata.json",
+      JSON.stringify(metadata)
     );
   })
   .catch(function(err) {
