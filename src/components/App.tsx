@@ -1,5 +1,7 @@
 import React, { Suspense } from "react";
 import { Map, TileLayer } from "react-leaflet";
+import ReactDOMServer from "react-dom/server";
+
 // @ts-ignore todo
 import { appContainer, mapContainer } from "./App.module.css";
 import DhammaHouseMarker from "./DhammaHouseMarker";
@@ -22,10 +24,47 @@ interface IState {
 }
 
 const formatLastUpdatedDate = (date: Date) => {
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
   const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  return `${month}/${day}/${year}`;
+  const month = date.getMonth();
+
+  return `${monthNames[month]}, ${year}`;
+};
+
+const getLastUpdatedDate = () =>
+  formatLastUpdatedDate(
+    new Date(metadataJSON.all_county_student_counts__last_updated)
+  );
+
+const Attribution = () => {
+  return (
+    <span>
+      Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>{" "}
+      contributors,{" "}
+      <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>,
+      Imagery © <a href="https://www.mapbox.com/">Mapbox</a>
+      <br />
+      <span>
+        Counts are of old students of Vipassana as taught by S.N. Goenka in the
+        North American Old Student Database, as of {getLastUpdatedDate()}. Only
+        counts are included in the map, no personal information is included.
+      </span>
+    </span>
+  );
 };
 
 export default class App extends React.Component<{}, IState> {
@@ -48,9 +87,7 @@ export default class App extends React.Component<{}, IState> {
           zoom={11}
         >
           <TileLayer
-            attribution={`Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a><br /><span>Nonidentifiable student data exported from DhammaReg database on ${formatLastUpdatedDate(
-              new Date(metadataJSON.all_county_student_counts__last_updated)
-            )}</span>`}
+            attribution={ReactDOMServer.renderToStaticMarkup(<Attribution />)}
             maxZoom={18}
             url={`https://api.mapbox.com/styles/v1/nyva/cjsg3abro31p81fmmn4s628ze/tiles/{z}/{x}/{y}?access_token=${accessToken}`}
           />
