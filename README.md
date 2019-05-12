@@ -14,6 +14,7 @@ This should ideally be done on a regular basis (i.e. every six months)
 # Manually trigger deploy with updated data
 
 1. Login to Netlify with the webmaster account and navigate to [Deploys](https://app.netlify.com/sites/nyva-grassroots-map/deploys) page
-2. Trigger deploy
-3. When deploy finishes, check the deploy preview
-4. If deploy preview looks right, publish the deploy
+2. If auto publishing is on, then click "Stop auto publishing" to turn it off
+3. Trigger deploy
+4. When deploy finishes, check the deploy preview
+5. If deploy preview looks right, publish the deploy
