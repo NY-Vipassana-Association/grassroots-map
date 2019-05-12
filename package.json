@@ -10,11 +10,7 @@
     "output-group-sittings-data": "gsjson --worksheet group_sittings 15bAkyPI-hJj8N0sQGU3f47CCvClewkx6YQAJ-ASC_M4 ./src/data/gitignored/groupSittings.json",
     "recreate-gitignored-data-folder": "rm -rf ./src/data/gitignored && mkdir ./src/data/gitignored",
     "output-all-site-data": "npm run recreate-gitignored-data-folder && node src/scripts/fetch-google-sheets-data",
-    "output-geojson-data": "node ./src/scripts/createRegions",
-    "//": "TODO: remove below surge-related commands after we redirect from surge to correct address",
-    "deploy": "npm run test-prod && surge --domain vipassana-grassroots-map.surge.sh ./build/",
-    "test-prod": "CYPRESS_baseUrl=http://localhost:8081 cypress run",
-    "start-prod": "npm run build && http-server ./build/ -p 8081"
+    "output-geojson-data": "node ./src/scripts/createRegions"
   },
   "author": "",
   "license": "ISC",
