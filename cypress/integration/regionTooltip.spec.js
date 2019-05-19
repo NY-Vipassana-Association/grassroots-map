@@ -1,3 +1,5 @@
+import mapCounties from "../../src/data/gitignored/oldStudentData.json";
+
 describe("Region Tooltip", () => {
   it("shows regional info when you click on a region", () => {
     cy.visit("");
@@ -5,7 +7,10 @@ describe("Region Tooltip", () => {
       .first()
       .click();
 
-    const numManhattanOldStudents = 3320;
+    const numManhattanOldStudents = mapCounties.find(
+      county => county.region_name === "Manhattan"
+    ).student_count_all_time;
+
     cy.contains(
       `There are ${numManhattanOldStudents} old students in Manhattan.`
     );
@@ -25,9 +30,13 @@ describe("Region Tooltip", () => {
       "Interested in connecting with your local Hudson old-student community? Reach out to our community organizer:"
     );
 
-    cy.contains("Vikas Churiwalla and Nandini Konar");
-    cy.contains("northernnj.nyva@gmail.com");
-    cy.contains("973-457-8680");
+    const hudsonNJ = mapCounties.find(
+      county => county.region_name === "Hudson" && county.state_name === "NJ"
+    );
+
+    hudsonNJ.regional_contact.split("\n").forEach(regionalContactLine => {
+      cy.contains(regionalContactLine);
+    });
   });
 
   it("shows planning committee contact info when there is no regional contact", () => {

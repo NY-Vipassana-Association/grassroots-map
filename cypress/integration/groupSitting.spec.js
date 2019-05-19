@@ -3,6 +3,12 @@ describe("Group Sitting", () => {
     cy.visit("");
     cy.get("body").should("not.contain", "Group Sitting");
 
+    // NOTE: If the information for this group sitting changes, or this
+    // group sitting is removed, then this test will also have to change.
+    // We could output mock test data to src/data/gitignored, so that this
+    // test wouldn't have to be updated along with the group sitting data.
+    // However, that could potentially cause this test to give false positives,
+    // in the case that the actual data were to change.
     const popupDataTestId = "group-sitting-popup-keven-porter";
 
     cy.get("[data-test=group-sitting-icon-keven-porter]").click();

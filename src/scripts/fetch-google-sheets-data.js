@@ -31,7 +31,7 @@ const includeOldStudentCounts = (
 
     return {
       ...mapCounty,
-      student_count_all_time: matchingCountyWithStudentCount.osCount
+      student_count_all_time: matchingCountyWithStudentCount.oscount
     };
   });
 };
