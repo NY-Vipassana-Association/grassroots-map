@@ -30,9 +30,13 @@ describe("Region Tooltip", () => {
       "Interested in connecting with your local Hudson old-student community? Reach out to our community organizer:"
     );
 
-    cy.contains("Vikas Churiwalla and Nandini Konar");
-    cy.contains("northernnj.nyva@gmail.com");
-    cy.contains("973-457-8680");
+    const hudsonNJ = mapCounties.find(
+      county => county.region_name === "Hudson" && county.state_name === "NJ"
+    );
+
+    hudsonNJ.regional_contact.split("\n").forEach(regionalContactLine => {
+      cy.contains(regionalContactLine);
+    });
   });
 
   it("shows planning committee contact info when there is no regional contact", () => {
