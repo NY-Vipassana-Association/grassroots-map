@@ -1,3 +1,5 @@
+import mapCounties from "../../src/data/gitignored/oldStudentData.json";
+
 describe("Region Tooltip", () => {
   it("shows regional info when you click on a region", () => {
     cy.visit("");
@@ -5,7 +7,10 @@ describe("Region Tooltip", () => {
       .first()
       .click();
 
-    const numManhattanOldStudents = 3320;
+    const numManhattanOldStudents = mapCounties.find(
+      county => county.region_name === "Manhattan"
+    ).student_count_all_time;
+
     cy.contains(
       `There are ${numManhattanOldStudents} old students in Manhattan.`
     );
